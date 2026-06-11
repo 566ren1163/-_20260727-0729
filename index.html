@@ -7,57 +7,57 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f0;color:#1a1a1a;padding:16px;max-width:720px;margin:0 auto}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f0;color:#1a1a1a;padding:16px;max-width:760px;margin:0 auto}
 .cover{background:linear-gradient(135deg,#B5D4F4 0%,#9FE1CB 100%);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
 .cover h1{font-size:26px;font-weight:500;color:#0C447C;margin-bottom:4px}
 .cover p{font-size:14px;color:#185FA5}
 .badge-row{display:flex;gap:8px;margin-top:1rem;flex-wrap:wrap}
 .badge{background:rgba(255,255,255,0.6);border:1px solid #85B7EB;border-radius:20px;padding:4px 12px;font-size:12px;color:#0C447C;display:flex;align-items:center;gap:4px}
-.route-bar{display:flex;align-items:center;gap:0;margin-bottom:1.5rem;overflow-x:auto;padding-bottom:4px;background:#fff;border-radius:12px;padding:12px;border:1px solid #e5e5e5}
-.route-city{background:#f5f5f0;border:1px solid #e5e5e5;border-radius:8px;padding:6px 12px;font-size:12px;font-weight:500;white-space:nowrap}
-.route-arrow{color:#999;font-size:12px;padding:0 4px;white-space:nowrap}
+.route-bar{display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-bottom:1.5rem;background:#fff;border-radius:12px;padding:12px 16px;border:1px solid #e5e5e5}
+.route-city{background:#f5f5f0;border:1px solid #e5e5e5;border-radius:8px;padding:5px 10px;font-size:12px;font-weight:500;white-space:nowrap}
+.route-arrow{color:#aaa;font-size:11px;padding:0 2px}
 .day-section{margin-bottom:2rem}
 .day-header{display:flex;align-items:center;gap:12px;margin-bottom:1rem}
-.day-badge{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;line-height:1.3;text-align:center}
+.day-badge{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;line-height:1.4;text-align:center}
 .day1 .day-badge{background:#B5D4F4;color:#0C447C}
 .day2 .day-badge{background:#CECBF6;color:#3C3489}
 .day3 .day-badge{background:#FAC775;color:#633806}
 .day-title{font-size:16px;font-weight:500}
-.day-subtitle{font-size:12px;color:#666}
-.timeline{position:relative;padding-left:24px}
-.timeline::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:1px;background:#e5e5e5}
-.tl-item{position:relative;margin-bottom:8px}
-.tl-dot{position:absolute;left:-20px;top:14px;width:10px;height:10px;border-radius:50%;border:2px solid}
-.day1 .tl-dot{background:#E6F1FB;border-color:#378ADD}
-.day2 .tl-dot{background:#EEEDFE;border-color:#7F77DD}
-.day3 .tl-dot{background:#FAEEDA;border-color:#BA7517}
-.tl-dot.spot{width:12px;height:12px;left:-21px;top:13px}
-.day1 .tl-dot.spot{background:#378ADD;border-color:#185FA5}
-.day2 .tl-dot.spot{background:#7F77DD;border-color:#534AB7}
-.day3 .tl-dot.spot{background:#BA7517;border-color:#854F0B}
-.tl-card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:12px 14px}
-.tl-card.transport{background:#f9f9f7;border-style:dashed;padding:8px 14px}
-.tl-card.meal{border-left:3px solid #1D9E75;border-radius:0 12px 12px 0}
-.tl-time{font-size:11px;color:#999;margin-bottom:2px}
+.day-subtitle{font-size:12px;color:#888;margin-top:2px}
+.timeline{display:flex;flex-direction:column;gap:4px}
+.tl-row{display:grid;grid-template-columns:72px 20px 1fr;align-items:start;gap:0 8px}
+.tl-time-col{padding-top:13px;text-align:right;font-size:11px;color:#999;line-height:1.4;white-space:nowrap}
+.tl-line-col{display:flex;flex-direction:column;align-items:center;position:relative}
+.tl-line-col::before{content:'';position:absolute;top:0;bottom:-4px;left:50%;transform:translateX(-50%);width:1px;background:#e5e5e5;z-index:0}
+.tl-row:last-child .tl-line-col::before{display:none}
+.tl-dot{width:10px;height:10px;border-radius:50%;border:2px solid;margin-top:14px;flex-shrink:0;position:relative;z-index:1;background:#fff}
+.tl-dot.spot{width:13px;height:13px;margin-top:13px}
+.day1 .tl-dot{border-color:#378ADD}.day1 .tl-dot.spot{background:#378ADD;border-color:#185FA5}
+.day2 .tl-dot{border-color:#7F77DD}.day2 .tl-dot.spot{background:#7F77DD;border-color:#534AB7}
+.day3 .tl-dot{border-color:#BA7517}.day3 .tl-dot.spot{background:#BA7517;border-color:#854F0B}
+.tl-content-col{padding-bottom:4px}
+.tl-card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:11px 14px;margin-top:6px}
+.tl-card.transport{background:#f9f9f7;border:1px dashed #ddd;border-radius:8px;padding:8px 12px;margin-top:6px}
+.tl-card.meal{border-left:3px solid #1D9E75;border-radius:0 10px 10px 0}
 .tl-name{font-size:14px;font-weight:500;margin-bottom:4px}
-.tl-name i{font-size:15px;vertical-align:-2px;margin-right:6px;color:#666}
+.tl-name i{font-size:15px;vertical-align:-2px;margin-right:6px;color:#888}
 .tl-desc{font-size:12px;color:#666;line-height:1.6}
-.tl-meta{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+.tl-meta{display:flex;gap:6px;margin-top:7px;flex-wrap:wrap}
 .tl-tag{font-size:11px;padding:2px 8px;border-radius:20px;border:1px solid}
-.tag-time{background:#f5f5f0;color:#666;border-color:#e5e5e5}
-.tag-alert{background:#FAEEDA;color:#633806;border-color:#FAC775}
+.tag-time{background:#f5f5f0;color:#888;border-color:#e5e5e5}
+.tag-alert{background:#FAEEDA;color:#633806;border-color:#EF9F27}
 .tag-food{background:#E1F5EE;color:#0F6E56;border-color:#5DCAA5}
-.transport-row{display:flex;align-items:center;gap:8px}
-.transport-row i{color:#999;font-size:16px}
-.transport-row span{font-size:12px;color:#666}
-.transport-row .dur{font-size:11px;color:#999;margin-left:auto}
-.night-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f5f0;border:1px solid #e5e5e5;border-radius:8px;padding:6px 12px;font-size:12px;color:#666;margin-top:8px}
-.section-divider{height:1px;background:#e5e5e5;margin:1.5rem 0}
-.tips-box{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:1rem 1.25rem;margin-top:1rem}
-.tips-box h3{font-size:13px;font-weight:500;color:#666;margin-bottom:8px}
+.transport-inner{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.transport-inner i{color:#aaa;font-size:15px;flex-shrink:0}
+.transport-inner .t-label{font-size:12px;color:#666;flex:1}
+.transport-inner .t-dur{font-size:11px;color:#aaa;white-space:nowrap}
+.night-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f5f0;border:1px solid #e5e5e5;border-radius:8px;padding:6px 12px;font-size:12px;color:#888;margin-top:4px;margin-left:100px}.section-divider{height:1px;background:#e5e5e5;margin:1.5rem 0}
+.tips-box{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:1rem 1.25rem}
+.tips-box h3{font-size:13px;font-weight:500;color:#888;margin-bottom:8px;display:flex;align-items:center;gap:6px}
 .tips-box ul{list-style:none;display:flex;flex-direction:column;gap:6px}
 .tips-box li{font-size:12px;color:#666;display:flex;align-items:flex-start;gap:6px}
 .tips-box li i{font-size:14px;flex-shrink:0;margin-top:1px}
+@media(max-width:480px){.tl-row{grid-template-columns:60px 18px 1fr}.night-badge{margin-left:86px}}
 </style>
 </head>
 <body>
@@ -75,20 +75,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 </div>
 
 <div class="route-bar">
-  <div class="route-city">羽田</div>
-  <div class="route-arrow">✈ 1:30 →</div>
-  <div class="route-city">新千歳</div>
-  <div class="route-arrow">🚗 →</div>
-  <div class="route-city">札幌</div>
-  <div class="route-arrow">🚗 →</div>
-  <div class="route-city">小樽 泊</div>
-  <div class="route-arrow">🚗 4.5h →</div>
-  <div class="route-city">函館 泊</div>
-  <div class="route-arrow">🚗 3.5h →</div>
-  <div class="route-city">札幌</div>
-  <div class="route-arrow">🚗 →</div>
-  <div class="route-city">新千歳</div>
-  <div class="route-arrow">✈ →</div>
+  <div class="route-city">羽田</div><div class="route-arrow">✈→</div>
+  <div class="route-city">新千歳</div><div class="route-arrow">🚗→</div>
+  <div class="route-city">札幌</div><div class="route-arrow">🚗→</div>
+  <div class="route-city">小樽 泊</div><div class="route-arrow">🚗 4.5h→</div>
+  <div class="route-city">函館 泊</div><div class="route-arrow">🚗 3.5h→</div>
+  <div class="route-city">札幌</div><div class="route-arrow">🚗→</div>
+  <div class="route-city">新千歳</div><div class="route-arrow">✈→</div>
   <div class="route-city">羽田</div>
 </div>
 
@@ -102,40 +95,42 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     </div>
   </div>
   <div class="timeline">
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-card transport"><div class="transport-row"><i class="ti ti-plane"></i><span>羽田 → 新千歳（飛行機）</span><span class="dur">11:15発 / 約1h30min</span></div></div></div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-card transport"><div class="transport-row"><i class="ti ti-building"></i><span>新千歳空港 着・荷物受取・レンタカー手続き</span><span class="dur">13:00〜13:30（約30min）</span></div></div></div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-card transport"><div class="transport-row"><i class="ti ti-car"></i><span>新千歳 → 羊ヶ丘展望台</span><span class="dur">約30min</span></div></div></div>
-    <div class="tl-item">
-      <div class="tl-dot spot"></div>
-      <div class="tl-card">
-        <div class="tl-time">14:00〜15:00</div>
+    <div class="tl-row"><div class="tl-time-col">11:15</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-plane"></i><span class="t-label">羽田 → 新千歳（飛行機）</span><span class="t-dur">約1h30min</span></div></div></div></div>
+    <div class="tl-row"><div class="tl-time-col">13:00</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-building"></i><span class="t-label">新千歳着・荷物受取・レンタカー手続き</span><span class="t-dur">約30min</span></div></div></div></div>
+    <div class="tl-row"><div class="tl-time-col">13:30</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-car"></i><span class="t-label">新千歳 → 羊ヶ丘展望台</span><span class="t-dur">約30min</span></div></div></div></div>
+    <div class="tl-row">
+      <div class="tl-time-col">14:00〜<br>15:00</div>
+      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
+      <div class="tl-content-col"><div class="tl-card">
         <div class="tl-name"><i class="ti ti-mountains"></i>さっぽろ羊ヶ丘展望台</div>
         <div class="tl-desc">クラーク博士の像と広大な牧草地が広がる札幌を代表する絶景スポット。北海道らしい雄大な風景を最初に満喫。</div>
         <div class="tl-meta"><span class="tl-tag tag-time">滞在 1h</span></div>
-      </div>
+      </div></div>
     </div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-card transport"><div class="transport-row"><i class="ti ti-car"></i><span>羊ヶ丘 → 白い恋人パーク</span><span class="dur">約30min</span></div></div></div>
-    <div class="tl-item">
-      <div class="tl-dot spot"></div>
-      <div class="tl-card">
-        <div class="tl-time">15:30〜17:00</div>
+    <div class="tl-row"><div class="tl-time-col">15:00</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-car"></i><span class="t-label">羊ヶ丘 → 白い恋人パーク</span><span class="t-dur">約30min</span></div></div></div></div>
+    <div class="tl-row">
+      <div class="tl-time-col">15:30〜<br>17:00</div>
+      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
+      <div class="tl-content-col"><div class="tl-card">
         <div class="tl-name"><i class="ti ti-building-castle"></i>白い恋人パーク</div>
         <div class="tl-desc">北海道銘菓「白い恋人」の製造工程を見学できるテーマパーク。英国風の建物が映えスポットとしても人気。お土産購入も忘れずに。</div>
         <div class="tl-meta"><span class="tl-tag tag-time">滞在 1.5h</span><span class="tl-tag tag-alert">最終入場 17:30</span></div>
-      </div>
+      </div></div>
     </div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-card transport"><div class="transport-row"><i class="ti ti-car"></i><span>白い恋人パーク → 小樽市内</span><span class="dur">約30min</span></div></div></div>
-    <div class="tl-item">
-      <div class="tl-dot spot"></div>
-      <div class="tl-card meal">
-        <div class="tl-time">17:30〜19:00</div>
+    <div class="tl-row"><div class="tl-time-col">17:00</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-car"></i><span class="t-label">白い恋人パーク → 小樽市内</span><span class="t-dur">約30min</span></div></div></div></div>
+    <div class="tl-row">
+      <div class="tl-time-col">17:30〜<br>19:00</div>
+      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
+      <div class="tl-content-col"><div class="tl-card meal">
         <div class="tl-name"><i class="ti ti-tools-kitchen-2"></i>小樽　夕食</div>
         <div class="tl-desc">小樽運河沿いのレストランや寿司屋でとれたての海鮮を堪能。北海道の海の幸を初日の夜に。</div>
         <div class="tl-meta"><span class="tl-tag tag-time">食事 1.5h</span><span class="tl-tag tag-food">海鮮・寿司</span></div>
-      </div>
+      </div></div>
     </div>
-    <div class="night-badge"><i class="ti ti-moon"></i> 小樽市内　泊</div>
+    <div class="tl-row"><div class="tl-time-col">19:00</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-moon"></i><span class="t-label">ホテルチェックイン（小樽市内）</span></div></div></div></div>
   </div>
+  <div class="night-badge"><i class="ti ti-moon"></i> 小樽市内　泊</div>
+
 </div>
 
 <div class="section-divider"></div>
@@ -150,56 +145,58 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     </div>
   </div>
   <div class="timeline">
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-card transport"><div class="transport-row"><i class="ti ti-building"></i><span>チェックアウト</span><span class="dur">8:00</span></div></div></div>
-    <div class="tl-item">
-      <div class="tl-dot spot"></div>
-      <div class="tl-card">
-        <div class="tl-time">8:30〜10:00　※天候次第</div>
+    <div class="tl-row"><div class="tl-time-col">8:00</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-building"></i><span class="t-label">チェックアウト</span></div></div></div></div>
+    <div class="tl-row">
+      <div class="tl-time-col">8:30〜<br>10:00</div>
+      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
+      <div class="tl-content-col"><div class="tl-card">
         <div class="tl-name"><i class="ti ti-wave-sine"></i>小樽　青の洞窟クルーズ</div>
         <div class="tl-desc">朝の澄んだ光が海面に反射し、洞窟内が幻想的な青に輝く。午前中が最も光の状態が良く透明度も高い。</div>
         <div class="tl-meta"><span class="tl-tag tag-time">滞在 1.5h</span><span class="tl-tag tag-alert">天候欠航あり・要予約</span></div>
-      </div>
+      </div></div>
     </div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-card transport"><div class="transport-row"><i class="ti ti-car"></i><span>小樽 → 函館（高速道路利用）</span><span class="dur">10:00発 / 約4.5h</span></div></div></div>
-    <div class="tl-item">
-      <div class="tl-dot spot"></div>
-      <div class="tl-card meal">
-        <div class="tl-time">12:15〜13:00　途中SA</div>
-        <div class="tl-name"><i class="ti ti-tools-kitchen-2"></i>昼食（高速SA）</div>
+    <div class="tl-row"><div class="tl-time-col">10:00</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-car"></i><span class="t-label">小樽 → 函館（高速道路）</span><span class="t-dur">約4.5h</span></div></div></div></div>
+    <div class="tl-row">
+      <div class="tl-time-col">12:15〜<br>13:00</div>
+      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
+      <div class="tl-content-col"><div class="tl-card meal">
+        <div class="tl-name"><i class="ti ti-tools-kitchen-2"></i>昼食（途中SA）</div>
         <div class="tl-desc">北海道のSAは道の駅並みのクオリティ。ソフトクリームや地元グルメも充実。</div>
         <div class="tl-meta"><span class="tl-tag tag-time">食事 45min</span></div>
-      </div>
+      </div></div>
     </div>
-    <div class="tl-item">
-      <div class="tl-dot spot"></div>
-      <div class="tl-card">
-        <div class="tl-time">14:30〜17:00</div>
+    <div class="tl-row">
+      <div class="tl-time-col">14:30〜<br>17:00</div>
+      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
+      <div class="tl-content-col"><div class="tl-card">
         <div class="tl-name"><i class="ti ti-building-arch"></i>函館　元町・ベイエリア散策</div>
         <div class="tl-desc">明治・大正時代の洋館が立ち並ぶ異国情緒あふれるエリア。坂道から函館湾を一望できる絶景ポイントも多数。旧函館区公会堂や元町教会群は必見。</div>
         <div class="tl-meta"><span class="tl-tag tag-time">滞在 2.5h</span></div>
-      </div>
+      </div></div>
     </div>
-    <div class="tl-item">
-      <div class="tl-dot spot"></div>
-      <div class="tl-card meal">
-        <div class="tl-time">17:00〜18:30</div>
+    <div class="tl-row">
+      <div class="tl-time-col">17:00〜<br>18:30</div>
+      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
+      <div class="tl-content-col"><div class="tl-card meal">
         <div class="tl-name"><i class="ti ti-tools-kitchen-2"></i>函館　夕食</div>
-        <div class="tl-desc">函館といえば塩ラーメン・イカ刺し・海鮮丼。函館朝市周辺の食堂や函館駅前のレストランが充実。</div>
+        <div class="tl-desc">函館といえば塩ラーメン・イカ刺し・海鮮丼。函館朝市周辺の食堂が充実。</div>
         <div class="tl-meta"><span class="tl-tag tag-time">食事 1.5h</span><span class="tl-tag tag-food">塩ラーメン・イカ</span></div>
-      </div>
+      </div></div>
     </div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-card transport"><div class="transport-row"><i class="ti ti-car"></i><span>函館市内 → 函館山ロープウェイ乗り場</span><span class="dur">約15min</span></div></div></div>
-    <div class="tl-item">
-      <div class="tl-dot spot"></div>
-      <div class="tl-card">
-        <div class="tl-time">19:00〜20:30</div>
+    <div class="tl-row"><div class="tl-time-col">18:30</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-car"></i><span class="t-label">函館市内 → 函館山ロープウェイ乗り場</span><span class="t-dur">約15min</span></div></div></div></div>
+    <div class="tl-row">
+      <div class="tl-time-col">19:00〜<br>20:30</div>
+      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
+      <div class="tl-content-col"><div class="tl-card">
         <div class="tl-name"><i class="ti ti-star"></i>函館山　夜景</div>
         <div class="tl-desc">世界三大夜景のひとつ。標高334mの山頂から函館の夜景を一望。くびれた半島の両側に広がる光の海は息をのむ美しさ。日没直後の19〜20時台がベスト。</div>
         <div class="tl-meta"><span class="tl-tag tag-time">滞在 1.5h</span><span class="tl-tag tag-alert">ロープウェイ推奨・混雑注意</span></div>
-      </div>
+      </div></div>
     </div>
-    <div class="night-badge"><i class="ti ti-moon"></i> 函館市内　泊（予約済）</div>
+    <div class="tl-row"><div class="tl-time-col">21:00</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-moon"></i><span class="t-label">ホテルチェックイン（函館市内）</span></div></div></div></div>
   </div>
+  <div class="night-badge"><i class="ti ti-moon"></i> 函館市内　泊（予約済）</div>
+
 </div>
 
 <div class="section-divider"></div>
@@ -214,64 +211,65 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     </div>
   </div>
   <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-dot spot"></div>
-      <div class="tl-card meal">
-        <div class="tl-time">5:30〜6:30</div>
+    <div class="tl-row">
+      <div class="tl-time-col">5:30〜<br>6:30</div>
+      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
+      <div class="tl-content-col"><div class="tl-card meal">
         <div class="tl-name"><i class="ti ti-fish"></i>函館朝市</div>
-        <div class="tl-desc">早朝5時から賑わう北海道屈指の市場。うに・いくら・カニ・イカなど新鮮な海の幸が並ぶ。朝食も兼ねて「どんぶり横丁」でいくら丼や海鮮丼を。</div>
+        <div class="tl-desc">早朝5時から賑わう北海道屈指の市場。うに・いくら・カニ・イカなど新鮮な海の幸が並ぶ。「どんぶり横丁」でいくら丼や海鮮丼を朝食に。</div>
         <div class="tl-meta"><span class="tl-tag tag-time">滞在 1h</span><span class="tl-tag tag-food">朝食も兼ねる</span></div>
-      </div>
+      </div></div>
     </div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-card transport"><div class="transport-row"><i class="ti ti-building"></i><span>ホテルチェックアウト・出発準備</span><span class="dur">7:00</span></div></div></div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-card transport"><div class="transport-row"><i class="ti ti-car"></i><span>函館 → 札幌（高速道路利用）</span><span class="dur">7:30発 / 約3.5h</span></div></div></div>
-    <div class="tl-item">
-      <div class="tl-dot spot"></div>
-      <div class="tl-card meal">
-        <div class="tl-time">11:00〜12:00</div>
+    <div class="tl-row"><div class="tl-time-col">7:00</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-building"></i><span class="t-label">チェックアウト・出発準備</span></div></div></div></div>
+    <div class="tl-row"><div class="tl-time-col">7:30</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-car"></i><span class="t-label">函館 → 札幌（高速道路）</span><span class="t-dur">約3.5h</span></div></div></div></div>
+    <div class="tl-row">
+      <div class="tl-time-col">11:00〜<br>12:00</div>
+      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
+      <div class="tl-content-col"><div class="tl-card meal">
         <div class="tl-name"><i class="ti ti-tools-kitchen-2"></i>札幌　昼食</div>
         <div class="tl-desc">締めは札幌グルメで。味噌ラーメン発祥の地・札幌のスープカレーやラーメンを。</div>
         <div class="tl-meta"><span class="tl-tag tag-time">食事 1h</span><span class="tl-tag tag-food">味噌ラーメン・スープカレー</span></div>
-      </div>
+      </div></div>
     </div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-card transport"><div class="transport-row"><i class="ti ti-car"></i><span>札幌市内 → 札幌ビール工場</span><span class="dur">約15min</span></div></div></div>
-    <div class="tl-item">
-      <div class="tl-dot spot"></div>
-      <div class="tl-card">
-        <div class="tl-time">12:15〜13:45</div>
+    <div class="tl-row"><div class="tl-time-col">12:00</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-car"></i><span class="t-label">札幌市内 → 札幌ビール工場</span><span class="t-dur">約15min</span></div></div></div></div>
+    <div class="tl-row">
+      <div class="tl-time-col">12:15〜<br>13:45</div>
+      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
+      <div class="tl-content-col"><div class="tl-card">
         <div class="tl-name"><i class="ti ti-beer"></i>札幌ビール工場</div>
         <div class="tl-desc">創業1876年の歴史ある工場。製造工程の見学後に新鮮なサッポロビールを試飲。工場直送のジンギスカンとの組み合わせも格別。</div>
         <div class="tl-meta"><span class="tl-tag tag-time">滞在 1.5h</span></div>
-      </div>
+      </div></div>
     </div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-card transport"><div class="transport-row"><i class="ti ti-car"></i><span>ビール工場 → ロイズ（北広島）</span><span class="dur">約25min</span></div></div></div>
-    <div class="tl-item">
-      <div class="tl-dot spot"></div>
-      <div class="tl-card">
-        <div class="tl-time">14:15〜15:15</div>
+    <div class="tl-row"><div class="tl-time-col">13:45</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-car"></i><span class="t-label">ビール工場 → ロイズ（北広島）</span><span class="t-dur">約25min</span></div></div></div></div>
+    <div class="tl-row">
+      <div class="tl-time-col">14:15〜<br>15:15</div>
+      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
+      <div class="tl-content-col"><div class="tl-card">
         <div class="tl-name"><i class="ti ti-candy"></i>ロイズカカオ＆チョコレートタウン</div>
-        <div class="tl-desc">北海道発のチョコレートブランド「ロイズ」の体験型テーマパーク。限定商品のお土産購入も。新千歳の直前でアクセス抜群。</div>
+        <div class="tl-desc">北海道発チョコレートブランド「ロイズ」の体験型テーマパーク。限定商品のお土産購入も。新千歳の直前でアクセス抜群。</div>
         <div class="tl-meta"><span class="tl-tag tag-time">滞在 1h</span><span class="tl-tag tag-food">お土産購入◎</span></div>
-      </div>
+      </div></div>
     </div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-card transport"><div class="transport-row"><i class="ti ti-car"></i><span>ロイズ → 新千歳空港（レンタカー返却）</span><span class="dur">約20min</span></div></div></div>
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <div class="tl-time">15:45〜22:35</div>
+    <div class="tl-row"><div class="tl-time-col">15:15</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-car"></i><span class="t-label">ロイズ → 新千歳空港（レンタカー返却）</span><span class="t-dur">約20min</span></div></div></div></div>
+    <div class="tl-row">
+      <div class="tl-time-col">15:45〜<br>22:35</div>
+      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
+      <div class="tl-content-col"><div class="tl-card">
         <div class="tl-name"><i class="ti ti-shopping-bag"></i>新千歳空港　お土産・夕食</div>
         <div class="tl-desc">新千歳空港は国内最高峰の空港グルメが揃う。ラーメン道場・スイーツ・海産物など買い物も充実。時間はたっぷり約6時間。</div>
         <div class="tl-meta"><span class="tl-tag tag-time">約6h</span></div>
-      </div>
+      </div></div>
     </div>
-    <div class="tl-item"><div class="tl-dot"></div><div class="tl-card transport"><div class="transport-row"><i class="ti ti-plane"></i><span>新千歳 → 羽田（飛行機）</span><span class="dur">22:35発 / 翌0:15着</span></div></div></div>
+    <div class="tl-row"><div class="tl-time-col">22:35</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-plane"></i><span class="t-label">新千歳 → 羽田（飛行機）</span><span class="t-dur">翌0:15着</span></div></div></div></div>
   </div>
+
 </div>
 
 <div class="section-divider"></div>
 
 <div class="tips-box">
-  <h3><i class="ti ti-alert-circle" style="font-size:14px;vertical-align:-2px;margin-right:4px"></i>やることリスト</h3>
+  <h3><i class="ti ti-checklist" style="font-size:15px"></i> やることリスト</h3>
   <ul>
     <li><i class="ti ti-square"></i>レンタカー予約（新千歳・7月末は早めに）</li>
     <li><i class="ti ti-square"></i>1日目ホテル予約（小樽市内）</li>
