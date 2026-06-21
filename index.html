@@ -11,6 +11,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
@@ -237,6 +239,26 @@ input, textarea, button { font-family: inherit; }
   </div>
   </sc-if>
 
+  <!-- ===== MAP VIEW (persistent host) ===== -->
+  <div style="display:{{ mapDisplay }};">
+    <div style="padding:14px 16px 8px;">
+      <div style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;font-size:18px;color:#214f3b;">スポット地図</div>
+      <div style="font-size:12px;color:#6b7d72;margin-top:3px;">番号は当日の訪問順 ・ 線は移動ルート</div>
+      <div style="display:flex;gap:7px;margin-top:11px;">
+        <sc-for list="{{ mapDayTabs }}" as="m" hint-placeholder-count="4">
+          <button onClick="{{ onMapDay }}" data-d="{{ m.d }}" style="flex:1;border:1.5px solid {{ m.bd }};background:{{ m.bg }};color:{{ m.fg }};border-radius:10px;padding:7px 4px;cursor:pointer;font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:12px;">{{ m.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display:flex;gap:14px;margin-top:11px;">
+        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:#5b6b61;font-weight:500;"><span style="width:11px;height:11px;border-radius:50%;background:#2f8a5b;"></span>DAY 1 札幌・小樽</span>
+        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:#5b6b61;font-weight:500;"><span style="width:11px;height:11px;border-radius:50%;background:#2f6f9e;"></span>DAY 2 → 函館</span>
+        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:#5b6b61;font-weight:500;"><span style="width:11px;height:11px;border-radius:50%;background:#c98a2b;"></span>DAY 3 → 帰路</span>
+      </div>
+    </div>
+    <div id="shiori-map" style="height:calc(100vh - 290px);min-height:340px;background:#dde6e0;"></div>
+    <div style="padding:9px 16px;font-size:11px;color:#8a978d;line-height:1.5;">ピンをタップで予定名と時刻を表示。位置は目安です（©OpenStreetMap）。</div>
+  </div>
+
   <!-- ===== BOTTOM TAB BAR ===== -->
   <div style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:440px;background:rgba(255,255,255,0.94);backdrop-filter:blur(8px);border-top:1px solid #e0e6df;display:flex;padding:7px 8px 9px;z-index:20;">
     <sc-for list="{{ bottomTabs }}" as="bt" hint-placeholder-count="3">
@@ -330,8 +352,10 @@ class Component extends DCLogic {
       activeDay: 0,
       editing: null,
       draftTodo: '',
-      draftPack: ''
+      draftPack: '',
+      mapDay: 'all'
     };
+    this._dataVer = 0;
   }
 
   load() {
@@ -342,6 +366,7 @@ class Component extends DCLogic {
   update(mut) {
     const d = JSON.parse(JSON.stringify(this.state.data));
     mut(d);
+    this._dataVer++;
     this.persist(d);
     this.setState({ data: d });
   }
@@ -589,6 +614,83 @@ class Component extends DCLogic {
   onAddPack = () => this.addPack();
   onAddKey = (e) => { if (e.key === 'Enter') { e.preventDefault(); if (e.currentTarget.dataset.list === 'todo') this.addTodo(); else this.addPack(); } };
 
+  // ---- map ----
+  mapCoords() {
+    return {
+      '新千歳着・レンタカー手続き': [42.7752, 141.6923],
+      'さっぽろ羊ヶ丘展望台': [43.0006, 141.4106],
+      '白い恋人パーク': [43.0907, 141.2785],
+      '回転寿し トリトン 手稲店': [43.1170, 141.2440],
+      'リトルバレル（小樽）': [43.1981, 140.9989],
+      '小樽 青の洞窟クルーズ': [43.1986, 140.9960],
+      '昼食（途中SA）': [42.2700, 140.2700],
+      '函館 元町・ベイエリア散策': [41.7649, 140.7136],
+      '函館 夕食': [41.7740, 140.7270],
+      '函館山 夜景': [41.7596, 140.7040],
+      'fav函館': [41.7710, 140.7260],
+      '函館朝市': [41.7732, 140.7268],
+      'ホテルに戻る・チェックアウト': [41.7710, 140.7260],
+      '札幌 昼食': [43.0621, 141.3544],
+      '札幌ビール工場': [43.0717, 141.3690],
+      'ロイズ カカオ＆チョコレートタウン': [43.2206, 141.5039],
+      '新千歳空港 お土産・夕食': [42.7752, 141.6923]
+    };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.view === 'map') this.ensureMap();
+  }
+
+  ensureMap() {
+    if (!window.L) { setTimeout(() => { if (this.state.view === 'map') this.ensureMap(); }, 160); return; }
+    const el = document.getElementById('shiori-map');
+    if (!el) { setTimeout(() => { if (this.state.view === 'map') this.ensureMap(); }, 120); return; }
+    if (!this.map) {
+      this.map = window.L.map(el, { scrollWheelZoom: true, zoomControl: true }).setView([43.1, 141.2], 7);
+      window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OpenStreetMap' }).addTo(this.map);
+      this._mapKey = null;
+    }
+    this.map.invalidateSize();
+    const key = this.state.mapDay + '|' + this._dataVer;
+    if (key !== this._mapKey) { this._mapKey = key; this.renderMarkers(); }
+  }
+
+  renderMarkers() {
+    const L = window.L;
+    if (!this.map || !L) return;
+    if (this.layer) this.map.removeLayer(this.layer);
+    this.layer = L.layerGroup().addTo(this.map);
+    const coords = this.mapCoords();
+    const colors = ['#2f8a5b', '#2f6f9e', '#c98a2b'];
+    const sel = this.state.mapDay;
+    const bounds = [];
+    this.state.data.days.forEach((day, di) => {
+      if (sel !== 'all' && +sel !== di) return;
+      const col = colors[di % 3];
+      const pts = [];
+      let n = 0;
+      day.blocks.forEach(b => {
+        if (b.type !== 'spot') return;
+        const c = coords[b.title];
+        if (!c) return;
+        n++;
+        pts.push(c); bounds.push(c);
+        const icon = L.divIcon({
+          className: '',
+          iconSize: [28, 28], iconAnchor: [14, 14],
+          html: '<div style="width:24px;height:24px;border-radius:50%;background:' + col + ';color:#fff;font:700 12px/24px Outfit,sans-serif;text-align:center;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.4);">' + n + '</div>'
+        });
+        L.marker(c, { icon }).addTo(this.layer)
+          .bindPopup('<b style="font-family:sans-serif;">' + b.title + '</b><br><span style="color:#666;">' + b.start + '〜</span>');
+      });
+      if (pts.length > 1) L.polyline(pts, { color: col, weight: 3, opacity: 0.75 }).addTo(this.layer);
+    });
+    if (bounds.length === 1) this.map.setView(bounds[0], 12);
+    else if (bounds.length > 1) this.map.fitBounds(bounds, { padding: [44, 44], maxZoom: 12 });
+  }
+
+  onMapDay = (e) => this.setState({ mapDay: e.currentTarget.dataset.d });
+
   renderVals() {
     const d = this.state.data;
     const view = this.state.view;
@@ -603,10 +705,15 @@ class Component extends DCLogic {
     }));
 
     const tabsDef = [
-      { v: 'itinerary', icon: '🗺️', label: '行程' },
+      { v: 'itinerary', icon: '📋', label: '行程' },
+      { v: 'map', icon: '🗺️', label: '地図' },
       { v: 'budget', icon: '💰', label: '予算' },
       { v: 'packing', icon: '🎒', label: '準備' }
     ];
+    const sel = this.state.mapDay;
+    const mapDayTabs = [
+      { d: 'all', label: '全日' }, { d: '0', label: 'DAY 1' }, { d: '1', label: 'DAY 2' }, { d: '2', label: 'DAY 3' }
+    ].map(t => ({ d: t.d, label: t.label, bg: sel === t.d ? '#214f3b' : '#ffffff', fg: sel === t.d ? '#ffffff' : '#6b7d72', bd: sel === t.d ? '#214f3b' : '#dde4dd' }));
     const bottomTabs = tabsDef.map(t => ({ v: t.v, icon: t.icon, label: t.label, color: view === t.v ? '#214f3b' : '#9aa79e' }));
 
     // budget
@@ -644,6 +751,9 @@ class Component extends DCLogic {
       isItinerary: view === 'itinerary',
       isBudget: view === 'budget',
       isPacking: view === 'packing',
+      mapDisplay: view === 'map' ? 'block' : 'none',
+      mapDayTabs,
+      onMapDay: this.onMapDay,
       dayTabs,
       day: { area: day.area, summary: day.summary },
       feed: this.computeFeed(day),
