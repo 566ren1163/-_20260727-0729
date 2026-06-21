@@ -1,286 +1,693 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>北海道旅行 2026 旅のしおり</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f0;color:#1a1a1a;padding:16px;max-width:760px;margin:0 auto}
-.cover{background:linear-gradient(135deg,#B5D4F4 0%,#9FE1CB 100%);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
-.cover h1{font-size:26px;font-weight:500;color:#0C447C;margin-bottom:4px}
-.cover p{font-size:14px;color:#185FA5}
-.badge-row{display:flex;gap:8px;margin-top:1rem;flex-wrap:wrap}
-.badge{background:rgba(255,255,255,0.6);border:1px solid #85B7EB;border-radius:20px;padding:4px 12px;font-size:12px;color:#0C447C;display:flex;align-items:center;gap:4px}
-.route-bar{display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-bottom:1.5rem;background:#fff;border-radius:12px;padding:12px 16px;border:1px solid #e5e5e5}
-.route-city{background:#f5f5f0;border:1px solid #e5e5e5;border-radius:8px;padding:5px 10px;font-size:12px;font-weight:500;white-space:nowrap}
-.route-arrow{color:#aaa;font-size:11px;padding:0 2px}
-.day-section{margin-bottom:2rem}
-.day-header{display:flex;align-items:center;gap:12px;margin-bottom:1rem}
-.day-badge{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0;line-height:1.4;text-align:center}
-.day1 .day-badge{background:#B5D4F4;color:#0C447C}
-.day2 .day-badge{background:#CECBF6;color:#3C3489}
-.day3 .day-badge{background:#FAC775;color:#633806}
-.day-title{font-size:16px;font-weight:500}
-.day-subtitle{font-size:12px;color:#888;margin-top:2px}
-.timeline{display:flex;flex-direction:column;gap:4px}
-.tl-row{display:grid;grid-template-columns:72px 20px 1fr;align-items:start;gap:0 8px}
-.tl-time-col{padding-top:13px;text-align:right;font-size:11px;color:#999;line-height:1.4;white-space:nowrap}
-.tl-line-col{display:flex;flex-direction:column;align-items:center;position:relative}
-.tl-line-col::before{content:'';position:absolute;top:0;bottom:-4px;left:50%;transform:translateX(-50%);width:1px;background:#e5e5e5;z-index:0}
-.tl-row:last-child .tl-line-col::before{display:none}
-.tl-dot{width:10px;height:10px;border-radius:50%;border:2px solid;margin-top:14px;flex-shrink:0;position:relative;z-index:1;background:#fff}
-.tl-dot.spot{width:13px;height:13px;margin-top:13px}
-.day1 .tl-dot{border-color:#378ADD}.day1 .tl-dot.spot{background:#378ADD;border-color:#185FA5}
-.day2 .tl-dot{border-color:#7F77DD}.day2 .tl-dot.spot{background:#7F77DD;border-color:#534AB7}
-.day3 .tl-dot{border-color:#BA7517}.day3 .tl-dot.spot{background:#BA7517;border-color:#854F0B}
-.tl-content-col{padding-bottom:4px}
-.tl-card{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:11px 14px;margin-top:6px}
-.tl-card.transport{background:#f9f9f7;border:1px dashed #ddd;border-radius:8px;padding:8px 12px;margin-top:6px}
-.tl-card.meal{border-left:3px solid #1D9E75;border-radius:0 10px 10px 0}
-.tl-name{font-size:14px;font-weight:500;margin-bottom:4px}
-.tl-name i{font-size:15px;vertical-align:-2px;margin-right:6px;color:#888}
-.tl-desc{font-size:12px;color:#666;line-height:1.6}
-.tl-meta{display:flex;gap:6px;margin-top:7px;flex-wrap:wrap}
-.tl-tag{font-size:11px;padding:2px 8px;border-radius:20px;border:1px solid}
-.tag-time{background:#f5f5f0;color:#888;border-color:#e5e5e5}
-.tag-alert{background:#FAEEDA;color:#633806;border-color:#EF9F27}
-.tag-food{background:#E1F5EE;color:#0F6E56;border-color:#5DCAA5}
-.transport-inner{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.transport-inner i{color:#aaa;font-size:15px;flex-shrink:0}
-.transport-inner .t-label{font-size:12px;color:#666;flex:1}
-.transport-inner .t-dur{font-size:11px;color:#aaa;white-space:nowrap}
-.night-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f5f0;border:1px solid #e5e5e5;border-radius:8px;padding:6px 12px;font-size:12px;color:#888;margin-top:4px;margin-left:100px}.section-divider{height:1px;background:#e5e5e5;margin:1.5rem 0}
-.tips-box{background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:1rem 1.25rem}
-.tips-box h3{font-size:13px;font-weight:500;color:#888;margin-bottom:8px;display:flex;align-items:center;gap:6px}
-.tips-box ul{list-style:none;display:flex;flex-direction:column;gap:6px}
-.tips-box li{font-size:12px;color:#666;display:flex;align-items:flex-start;gap:6px}
-.tips-box li i{font-size:14px;flex-shrink:0;margin-top:1px}
-a.spot-link{color:inherit;text-decoration:none;border-bottom:1.5px dashed #aaa;padding-bottom:1px;transition:color .15s,border-color .15s}
-a.spot-link:hover{color:#185FA5;border-color:#185FA5}
-a.spot-link::after{content:' ↗';font-size:10px;color:#aaa;vertical-align:1px}
-@media(max-width:480px){.tl-row{grid-template-columns:60px 18px 1fr}.night-badge{margin-left:86px}}
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { background: #d9e0d8; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+input, textarea, button { font-family: inherit; }
+[data-noscroll]::-webkit-scrollbar { display: none; }
+@keyframes sheetUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+</style>
+</helmet>
 
-<div class="cover">
-  <p style="font-size:12px;color:#185FA5;margin-bottom:6px">旅のしおり</p>
-  <h1>北海道旅行 2026</h1>
-  <p>2026年7月27日（月）〜 29日（水）　2泊3日</p>
-  <div class="badge-row">
-    <div class="badge"><i class="ti ti-users"></i> 4人</div>
-    <div class="badge"><i class="ti ti-car"></i> レンタカー移動</div>
-    <div class="badge"><i class="ti ti-currency-yen"></i> 1人10万円以内</div>
-    <div class="badge"><i class="ti ti-map-pin"></i> 札幌・小樽・函館</div>
+<div style="max-width:440px;margin:0 auto;min-height:100vh;background:#eef1ec;font-family:'Noto Sans JP',sans-serif;color:#1c2a24;position:relative;overflow:hidden;padding-bottom:84px;">
+
+  <!-- ===== HERO ===== -->
+  <div style="background:#214f3b;color:#fff;padding:22px 20px 18px;position:relative;overflow:hidden;">
+    <div style="position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,0.05);"></div>
+    <div style="position:absolute;right:34px;top:54px;width:90px;height:90px;border-radius:50%;background:rgba(255,255,255,0.04);"></div>
+    <div style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.32em;color:#9cc8ad;">旅のしおり</div>
+    <h1 style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;font-size:30px;line-height:1.15;margin:6px 0 4px;letter-spacing:0.01em;">北海道旅行 2026</h1>
+    <div style="font-family:'Outfit','Noto Sans JP',sans-serif;font-weight:600;font-size:14px;color:#cfe3d6;">2026.7.27<span style="font-size:11px;">(月)</span> – 7.29<span style="font-size:11px;">(水)</span> ・ 2泊3日</div>
+    <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:13px;">
+      <span style="background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.14);font-size:12px;font-weight:500;padding:5px 11px;border-radius:999px;">👥 4人</span>
+      <span style="background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.14);font-size:12px;font-weight:500;padding:5px 11px;border-radius:999px;">🚗 レンタカー移動</span>
+      <span style="background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.14);font-size:12px;font-weight:500;padding:5px 11px;border-radius:999px;">札幌・小樽・函館</span>
+    </div>
+    <!-- route ribbon -->
+    <div data-noscroll style="margin-top:15px;display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;">
+      <span style="flex:none;background:#fff;color:#214f3b;font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:12px;padding:5px 10px;border-radius:8px;">羽田</span>
+      <span style="flex:none;color:#9cc8ad;font-size:12px;padding:0 3px;">✈</span>
+      <span style="flex:none;color:#dfeee4;font-weight:500;font-size:12px;padding:5px 8px;">新千歳</span>
+      <span style="flex:none;color:#9cc8ad;font-size:11px;padding:0 2px;">🚗</span>
+      <span style="flex:none;color:#dfeee4;font-weight:500;font-size:12px;padding:5px 8px;">札幌</span>
+      <span style="flex:none;color:#9cc8ad;font-size:11px;padding:0 2px;">🚗</span>
+      <span style="flex:none;background:#3a8c5f;color:#fff;font-weight:700;font-size:12px;padding:5px 9px;border-radius:8px;">小樽 🛏</span>
+      <span style="flex:none;color:#9cc8ad;font-size:11px;padding:0 2px;">🚗</span>
+      <span style="flex:none;background:#3a8c5f;color:#fff;font-weight:700;font-size:12px;padding:5px 9px;border-radius:8px;">函館 🛏</span>
+      <span style="flex:none;color:#9cc8ad;font-size:11px;padding:0 2px;">🚗</span>
+      <span style="flex:none;color:#dfeee4;font-weight:500;font-size:12px;padding:5px 8px;">札幌</span>
+      <span style="flex:none;color:#9cc8ad;font-size:11px;padding:0 2px;">🚗</span>
+      <span style="flex:none;color:#dfeee4;font-weight:500;font-size:12px;padding:5px 8px;">新千歳</span>
+      <span style="flex:none;color:#9cc8ad;font-size:12px;padding:0 3px;">✈</span>
+      <span style="flex:none;background:#fff;color:#214f3b;font-weight:700;font-size:12px;padding:5px 10px;border-radius:8px;">羽田</span>
+    </div>
   </div>
+
+  <!-- ===== ITINERARY VIEW ===== -->
+  <sc-if value="{{ isItinerary }}" hint-placeholder-val="{{ true }}">
+  <div>
+    <!-- day switcher -->
+    <div style="display:flex;gap:8px;padding:14px 16px 4px;position:sticky;top:0;z-index:5;background:#eef1ec;">
+      <sc-for list="{{ dayTabs }}" as="d" hint-placeholder-count="3">
+        <button onClick="{{ onDayClick }}" data-i="{{ d.i }}" style="flex:1;border:1.5px solid {{ d.bd }};background:{{ d.bg }};color:{{ d.fg }};border-radius:12px;padding:9px 4px;cursor:pointer;text-align:center;transition:all .15s;">
+          <div style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.04em;">{{ d.tag }}</div>
+          <div style="font-family:'Outfit',sans-serif;font-weight:600;font-size:11px;opacity:0.85;margin-top:1px;">{{ d.date }}</div>
+        </button>
+      </sc-for>
+    </div>
+
+    <!-- day header -->
+    <div style="padding:12px 18px 6px;">
+      <div style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;font-size:18px;color:#214f3b;">{{ day.area }}</div>
+      <div style="font-size:12px;color:#6b7d72;margin-top:3px;line-height:1.5;">{{ day.summary }}</div>
+    </div>
+
+    <!-- timeline feed -->
+    <div style="padding:6px 16px 8px;">
+      <sc-for list="{{ feed }}" as="it" hint-placeholder-count="6">
+        <div style="display:grid;grid-template-columns:42px 1fr;gap:10px;">
+          <!-- rail -->
+          <div style="position:relative;">
+            <div style="position:absolute;left:19px;top:0;bottom:0;width:2px;background:#d1ddd3;"></div>
+            <sc-if value="{{ it.isMove }}" hint-placeholder-val="{{ true }}">
+              <div style="position:absolute;left:5px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:#fff;border:1.5px solid #cdd9ce;display:flex;align-items:center;justify-content:center;font-size:14px;">{{ it.icon }}</div>
+            </sc-if>
+            <sc-if value="{{ it.isSpot }}" hint-placeholder-val="{{ true }}">
+              <div style="position:absolute;left:12px;top:16px;width:16px;height:16px;border-radius:50%;background:#fff;border:3.5px solid {{ it.dot }};"></div>
+            </sc-if>
+          </div>
+          <!-- content -->
+          <div style="min-width:0;">
+            <!-- MOVE -->
+            <sc-if value="{{ it.isMove }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;align-items:center;min-height:46px;">
+                <span style="font-size:12px;color:#6b7d72;background:#e4e9e2;border-radius:8px;padding:4px 10px;font-weight:500;">{{ it.label }}</span>
+              </div>
+            </sc-if>
+            <!-- SPOT -->
+            <sc-if value="{{ it.isSpot }}" hint-placeholder-val="{{ true }}">
+              <div style="padding-bottom:10px;">
+                <sc-if value="{{ it.hasGap }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;background:{{ it.gapBg }};border:1px dashed {{ it.gapBd }};border-radius:10px;padding:7px 10px 7px 12px;margin-bottom:8px;">
+                    <span style="font-size:12px;font-weight:700;color:{{ it.gapColor }};">{{ it.gapText }}</span>
+                    <sc-if value="{{ it.gapAdd }}" hint-placeholder-val="{{ false }}">
+                      <button onClick="{{ onAddAtGap }}" data-bidx="{{ it.bidx }}" data-start="{{ it.gapStart }}" style="flex:none;border:none;background:#3a8c5f;color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:7px;cursor:pointer;">＋入れる</button>
+                    </sc-if>
+                  </div>
+                </sc-if>
+                <div onClick="{{ onOpenEdit }}" data-bidx="{{ it.bidx }}" style="background:{{ it.cardBg }};border:1px solid {{ it.cardBd }};border-radius:14px;padding:12px 13px;cursor:pointer;box-shadow:0 1px 2px rgba(28,42,36,0.04);">
+                  <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+                    <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:14px;color:{{ it.timeColor }};letter-spacing:0.01em;background:{{ it.timeBg }};padding:2px 9px;border-radius:7px;">{{ it.timeRange }}</span>
+                    <span style="flex:1;"></span>
+                    <span style="font-size:11px;color:#aeb9b0;">✎ 編集</span>
+                  </div>
+                  <div style="display:flex;align-items:baseline;gap:8px;">
+                    <div style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:15.5px;line-height:1.35;color:{{ it.titleColor }};flex:1;">{{ it.title }}</div>
+                    <sc-if value="{{ it.hasLink }}" hint-placeholder-val="{{ false }}">
+                      <a href="{{ it.link }}" target="_blank" rel="noopener" onClick="{{ stop }}" style="flex:none;font-size:11px;font-weight:700;color:#2f6f9e;text-decoration:none;background:#e6f0f6;padding:4px 9px;border-radius:7px;">地図 ↗</a>
+                    </sc-if>
+                  </div>
+                  <sc-if value="{{ it.hasDesc }}" hint-placeholder-val="{{ false }}">
+                    <p style="margin:7px 0 0;font-size:12.5px;line-height:1.65;color:#5b6b61;text-wrap:pretty;">{{ it.desc }}</p>
+                  </sc-if>
+                  <sc-if value="{{ it.hasTags }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:9px;">
+                      <sc-for list="{{ it.tags }}" as="tg" hint-placeholder-count="2">
+                        <span style="font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:{{ tg.bg }};color:{{ tg.color }};">{{ tg.t }}</span>
+                      </sc-for>
+                    </div>
+                  </sc-if>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </sc-for>
+
+      <!-- add spot -->
+      <div style="display:grid;grid-template-columns:42px 1fr;gap:10px;">
+        <div></div>
+        <button onClick="{{ onAddSpot }}" style="margin-top:2px;width:100%;border:1.5px dashed #b9c8bc;background:transparent;color:#3a8c5f;font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:13px;padding:11px;border-radius:12px;cursor:pointer;">＋ 予定を追加</button>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ===== BUDGET VIEW ===== -->
+  <sc-if value="{{ isBudget }}" hint-placeholder-val="{{ false }}">
+  <div style="padding:18px 18px 8px;">
+    <div style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;font-size:18px;color:#214f3b;">予算管理</div>
+    <div style="font-size:12px;color:#6b7d72;margin-top:3px;">1人 10万円以内 ・ 4人で計画</div>
+
+    <!-- summary card -->
+    <div style="background:#214f3b;color:#fff;border-radius:16px;padding:16px 16px 18px;margin-top:14px;position:relative;overflow:hidden;">
+      <div style="font-size:12px;color:#9cc8ad;font-weight:500;">1人あたり 概算</div>
+      <div style="display:flex;align-items:baseline;gap:8px;margin-top:2px;">
+        <div style="font-family:'Outfit',sans-serif;font-weight:700;font-size:34px;line-height:1;">{{ b.perPersonFmt }}</div>
+        <div style="font-size:12px;color:#cfe3d6;">/ 10万円</div>
+      </div>
+      <div style="height:9px;border-radius:999px;background:rgba(255,255,255,0.18);margin-top:13px;overflow:hidden;">
+        <div style="height:100%;border-radius:999px;background:{{ b.barColor }};width:{{ b.pct }}%;transition:width .3s;"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:9px;font-size:12px;">
+        <span style="color:#cfe3d6;">{{ b.remainLabel }} <b style="font-family:'Outfit',sans-serif;color:#fff;">{{ b.remainFmt }}</b></span>
+        <span style="color:#cfe3d6;">4人合計 <b style="font-family:'Outfit',sans-serif;color:#fff;">{{ b.groupFmt }}</b></span>
+      </div>
+    </div>
+
+    <!-- categories -->
+    <div style="font-size:12px;color:#6b7d72;font-weight:700;margin:18px 2px 8px;">内訳（1人あたり・タップで編集）</div>
+    <div style="background:#fff;border:1px solid #e0e6df;border-radius:14px;overflow:hidden;">
+      <sc-for list="{{ b.cats }}" as="c" hint-placeholder-count="6">
+        <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid #eef1ec;">
+          <span style="width:28px;height:28px;border-radius:8px;background:{{ c.iconBg }};display:flex;align-items:center;justify-content:center;font-size:14px;flex:none;">{{ c.icon }}</span>
+          <span style="flex:1;font-size:13.5px;font-weight:500;">{{ c.label }}</span>
+          <span style="font-family:'Outfit',sans-serif;font-size:13px;color:#8a978d;">¥</span>
+          <input type="number" inputmode="numeric" min="0" step="500" value="{{ c.amount }}" data-id="{{ c.id }}" onChange="{{ onBudgetChange }}" style="width:78px;text-align:right;border:1px solid #dde4dd;border-radius:8px;padding:6px 8px;font-family:'Outfit',sans-serif;font-weight:600;font-size:14px;color:#1c2a24;background:#f7f9f6;" />
+        </div>
+      </sc-for>
+    </div>
+
+    <!-- walica -->
+    <div style="margin-top:18px;background:#e6f0f6;border:1px solid #cfe1ee;border-radius:14px;padding:14px 15px;">
+      <div style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:14px;color:#235577;">旅行後の割り勘は Walica で</div>
+      <p style="margin:6px 0 11px;font-size:12px;line-height:1.6;color:#3f6e8c;">立替えた履歴を入力するだけで「誰が誰にいくら」を自動計算。会員登録・アプリ不要。グループURLを4人で共有できます。</p>
+      <a href="https://walica.jp/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:7px;background:#2f6f9e;color:#fff;text-decoration:none;font-weight:700;font-size:13.5px;padding:11px;border-radius:10px;">ワリカで割り勘グループを作る ↗</a>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ===== PACKING / TODO VIEW ===== -->
+  <sc-if value="{{ isPacking }}" hint-placeholder-val="{{ false }}">
+  <div style="padding:18px 18px 8px;">
+    <div style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;font-size:18px;color:#214f3b;">準備リスト</div>
+
+    <!-- todos -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin:16px 2px 8px;">
+      <span style="font-size:13px;font-weight:700;color:#214f3b;">📋 やること（予約・確認）</span>
+      <span style="font-family:'Outfit',sans-serif;font-size:12px;color:#8a978d;font-weight:600;">{{ todoDoneLabel }}</span>
+    </div>
+    <div style="background:#fff;border:1px solid #e0e6df;border-radius:14px;overflow:hidden;">
+      <sc-for list="{{ todos }}" as="td" hint-placeholder-count="5">
+        <div style="display:flex;align-items:flex-start;gap:11px;padding:11px 13px;border-bottom:1px solid #eef1ec;">
+          <button onClick="{{ onToggle }}" data-list="todo" data-i="{{ td.i }}" style="flex:none;margin-top:1px;width:22px;height:22px;border-radius:7px;border:2px solid {{ td.bd }};background:{{ td.box }};color:#fff;font-size:13px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;">{{ td.check }}</button>
+          <span style="flex:1;font-size:13px;line-height:1.5;color:{{ td.textColor }};text-decoration:{{ td.deco }};">{{ td.t }}</span>
+          <button onClick="{{ onDelete }}" data-list="todo" data-i="{{ td.i }}" style="flex:none;border:none;background:transparent;color:#c2cbc3;font-size:16px;cursor:pointer;line-height:1;padding:0 2px;">×</button>
+        </div>
+      </sc-for>
+      <div style="display:flex;gap:8px;padding:10px 12px;background:#f7f9f6;">
+        <input value="{{ draftTodo }}" onChange="{{ onDraftTodoChange }}" onKeyDown="{{ onAddKey }}" data-list="todo" placeholder="やることを追加…" style="flex:1;border:1px solid #dde4dd;border-radius:8px;padding:8px 10px;font-size:13px;background:#fff;" />
+        <button onClick="{{ onAddTodo }}" style="flex:none;border:none;background:#3a8c5f;color:#fff;font-weight:700;font-size:13px;padding:8px 14px;border-radius:8px;cursor:pointer;">追加</button>
+      </div>
+    </div>
+
+    <!-- packing -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin:20px 2px 8px;">
+      <span style="font-size:13px;font-weight:700;color:#214f3b;">🎒 持ち物（7月下旬・道内）</span>
+      <span style="font-family:'Outfit',sans-serif;font-size:12px;color:#8a978d;font-weight:600;">{{ packDoneLabel }}</span>
+    </div>
+    <div style="background:#fff;border:1px solid #e0e6df;border-radius:14px;overflow:hidden;">
+      <sc-for list="{{ packing }}" as="pk" hint-placeholder-count="6">
+        <div style="display:flex;align-items:flex-start;gap:11px;padding:11px 13px;border-bottom:1px solid #eef1ec;">
+          <button onClick="{{ onToggle }}" data-list="pack" data-i="{{ pk.i }}" style="flex:none;margin-top:1px;width:22px;height:22px;border-radius:7px;border:2px solid {{ pk.bd }};background:{{ pk.box }};color:#fff;font-size:13px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;">{{ pk.check }}</button>
+          <span style="flex:1;font-size:13px;line-height:1.5;color:{{ pk.textColor }};text-decoration:{{ pk.deco }};">{{ pk.t }}</span>
+          <button onClick="{{ onDelete }}" data-list="pack" data-i="{{ pk.i }}" style="flex:none;border:none;background:transparent;color:#c2cbc3;font-size:16px;cursor:pointer;line-height:1;padding:0 2px;">×</button>
+        </div>
+      </sc-for>
+      <div style="display:flex;gap:8px;padding:10px 12px;background:#f7f9f6;">
+        <input value="{{ draftPack }}" onChange="{{ onDraftPackChange }}" onKeyDown="{{ onAddKey }}" data-list="pack" placeholder="持ち物を追加…" style="flex:1;border:1px solid #dde4dd;border-radius:8px;padding:8px 10px;font-size:13px;background:#fff;" />
+        <button onClick="{{ onAddPack }}" style="flex:none;border:none;background:#3a8c5f;color:#fff;font-weight:700;font-size:13px;padding:8px 14px;border-radius:8px;cursor:pointer;">追加</button>
+      </div>
+    </div>
+    <div style="height:8px;"></div>
+  </div>
+  </sc-if>
+
+  <!-- ===== BOTTOM TAB BAR ===== -->
+  <div style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:440px;background:rgba(255,255,255,0.94);backdrop-filter:blur(8px);border-top:1px solid #e0e6df;display:flex;padding:7px 8px 9px;z-index:20;">
+    <sc-for list="{{ bottomTabs }}" as="bt" hint-placeholder-count="3">
+      <button onClick="{{ onTabClick }}" data-v="{{ bt.v }}" style="flex:1;border:none;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px 0;color:{{ bt.color }};">
+        <span style="font-size:19px;line-height:1;">{{ bt.icon }}</span>
+        <span style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:11px;font-weight:700;">{{ bt.label }}</span>
+      </button>
+    </sc-for>
+  </div>
+
+  <!-- ===== EDIT SHEET ===== -->
+  <sc-if value="{{ editing }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeEdit }}" style="position:fixed;inset:0;background:rgba(20,30,25,0.4);z-index:40;animation:fadeIn .18s ease;display:flex;align-items:flex-end;justify-content:center;">
+    <div onClick="{{ stop }}" style="width:100%;max-width:440px;background:#f4f6f2;border-radius:20px 20px 0 0;padding:8px 18px 26px;animation:sheetUp .26s cubic-bezier(.2,.8,.2,1);max-height:90vh;overflow-y:auto;">
+      <div style="width:38px;height:4px;border-radius:999px;background:#cdd6cd;margin:8px auto 14px;"></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+        <div style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:900;font-size:17px;color:#214f3b;">{{ editTitle }}</div>
+        <div style="display:flex;gap:6px;">
+          <button onClick="{{ onMoveUp }}" style="border:1px solid #dde4dd;background:#fff;width:34px;height:32px;border-radius:9px;cursor:pointer;font-size:14px;color:#5b6b61;">↑</button>
+          <button onClick="{{ onMoveDown }}" style="border:1px solid #dde4dd;background:#fff;width:34px;height:32px;border-radius:9px;cursor:pointer;font-size:14px;color:#5b6b61;">↓</button>
+        </div>
+      </div>
+
+      <!-- SPOT FIELDS -->
+      <sc-if value="{{ editIsSpot }}" hint-placeholder-val="{{ false }}">
+        <div>
+          <div style="display:flex;gap:10px;">
+            <div style="flex:1;">
+              <label style="font-size:11px;font-weight:700;color:#6b7d72;">開始時刻</label>
+              <input type="time" value="{{ editing.draft.start }}" data-field="start" onChange="{{ onDraftChange }}" style="width:100%;margin-top:5px;border:1px solid #dde4dd;border-radius:10px;padding:10px;font-family:'Outfit',sans-serif;font-size:15px;background:#fff;" />
+            </div>
+            <div style="flex:1;">
+              <label style="font-size:11px;font-weight:700;color:#6b7d72;">所要（分）</label>
+              <input type="number" min="0" step="5" value="{{ editing.draft.durationMin }}" data-field="durationMin" onChange="{{ onDraftChange }}" style="width:100%;margin-top:5px;border:1px solid #dde4dd;border-radius:10px;padding:10px;font-family:'Outfit',sans-serif;font-size:15px;background:#fff;" />
+            </div>
+          </div>
+          <label style="display:block;font-size:11px;font-weight:700;color:#6b7d72;margin-top:13px;">タイトル</label>
+          <input value="{{ editing.draft.title }}" data-field="title" onChange="{{ onDraftChange }}" style="width:100%;margin-top:5px;border:1px solid #dde4dd;border-radius:10px;padding:10px;font-size:14px;font-weight:500;background:#fff;" />
+          <label style="display:block;font-size:11px;font-weight:700;color:#6b7d72;margin-top:13px;">メモ・説明</label>
+          <textarea rows="3" data-field="desc" onChange="{{ onDraftChange }}" style="width:100%;margin-top:5px;border:1px solid #dde4dd;border-radius:10px;padding:10px;font-size:13px;line-height:1.6;background:#fff;resize:vertical;">{{ editing.draft.desc }}</textarea>
+        </div>
+      </sc-if>
+
+      <!-- MOVE FIELDS -->
+      <sc-if value="{{ editIsMove }}" hint-placeholder-val="{{ false }}">
+        <div>
+          <label style="font-size:11px;font-weight:700;color:#6b7d72;">移動手段</label>
+          <div style="display:flex;gap:8px;margin-top:5px;">
+            <button onClick="{{ setDraftMode }}" data-mode="car" style="flex:1;border:1.5px solid {{ modeCarBd }};background:{{ modeCarBg }};color:{{ modeCarFg }};border-radius:10px;padding:10px;cursor:pointer;font-weight:700;font-size:13px;">🚗 車</button>
+            <button onClick="{{ setDraftMode }}" data-mode="plane" style="flex:1;border:1.5px solid {{ modePlaneBd }};background:{{ modePlaneBg }};color:{{ modePlaneFg }};border-radius:10px;padding:10px;cursor:pointer;font-weight:700;font-size:13px;">✈ 飛行機</button>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:13px;">
+            <div style="flex:2;">
+              <label style="font-size:11px;font-weight:700;color:#6b7d72;">表示ラベル</label>
+              <input value="{{ editing.draft.label }}" data-field="label" onChange="{{ onDraftChange }}" style="width:100%;margin-top:5px;border:1px solid #dde4dd;border-radius:10px;padding:10px;font-size:14px;background:#fff;" />
+            </div>
+            <div style="flex:1;">
+              <label style="font-size:11px;font-weight:700;color:#6b7d72;">所要（分）</label>
+              <input type="number" min="0" step="5" value="{{ editing.draft.min }}" data-field="min" onChange="{{ onDraftChange }}" style="width:100%;margin-top:5px;border:1px solid #dde4dd;border-radius:10px;padding:10px;font-family:'Outfit',sans-serif;font-size:15px;background:#fff;" />
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <div style="display:flex;gap:10px;margin-top:20px;">
+        <button onClick="{{ deleteBlock }}" style="flex:none;border:1.5px solid #e6c4bc;background:#fbeeeb;color:#bf4f3c;font-weight:700;font-size:13.5px;padding:13px 16px;border-radius:12px;cursor:pointer;">削除</button>
+        <button onClick="{{ saveEdit }}" style="flex:1;border:none;background:#214f3b;color:#fff;font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:14.5px;padding:13px;border-radius:12px;cursor:pointer;">保存する</button>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
 </div>
 
-<div class="route-bar">
-  <div class="route-city">羽田</div><div class="route-arrow">✈→</div>
-  <div class="route-city">新千歳</div><div class="route-arrow">🚗→</div>
-  <div class="route-city">札幌</div><div class="route-arrow">🚗→</div>
-  <div class="route-city">小樽 泊</div><div class="route-arrow">🚗 4.5h→</div>
-  <div class="route-city">函館 泊</div><div class="route-arrow">🚗 3.5h→</div>
-  <div class="route-city">札幌</div><div class="route-arrow">🚗→</div>
-  <div class="route-city">新千歳</div><div class="route-arrow">✈→</div>
-  <div class="route-city">羽田</div>
-</div>
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#214f3b"/>
+    <path d="M30 68 L45 40 L56 58 L64 46 L72 68 Z" fill="#6fd29a"/>
+    <circle cx="68" cy="34" r="7" fill="#cfe3d6"/>
+    <text x="50" y="86" font-family="sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">北海道</text>
+  </svg>
+</template></x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:412,&quot;height&quot;:860}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.KEY = 'hokkaido-2026-shiori-v1';
+    this.state = {
+      data: this.load(),
+      view: 'itinerary',
+      activeDay: 0,
+      editing: null,
+      draftTodo: '',
+      draftPack: ''
+    };
+  }
 
-<!-- DAY 1 -->
-<div class="day-section day1">
-  <div class="day-header">
-    <div class="day-badge">DAY<br>1</div>
-    <div>
-      <div class="day-title">7月27日（月）　札幌・小樽エリア</div>
-      <div class="day-subtitle">新千歳着 → 羊ヶ丘 → 白い恋人パーク → トリトン → 小樽泊</div>
-    </div>
-  </div>
-  <div class="timeline">
-    <div class="tl-row"><div class="tl-time-col">11:15</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-plane"></i><span class="t-label">羽田 → 新千歳（飛行機）</span><span class="t-dur">約1h30min</span></div></div></div></div>
-    <div class="tl-row"><div class="tl-time-col">13:00</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-building"></i><span class="t-label">新千歳着・荷物受取・レンタカー手続き</span><span class="t-dur">約30min</span></div></div></div></div>
-    <div class="tl-row"><div class="tl-time-col">13:30</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-car"></i><span class="t-label">新千歳 → 羊ヶ丘展望台</span><span class="t-dur">約30min</span></div></div></div></div>
-    <div class="tl-row">
-      <div class="tl-time-col">14:00〜<br>15:00</div>
-      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
-      <div class="tl-content-col"><div class="tl-card">
-        <div class="tl-name"><i class="ti ti-mountains"></i><a class="spot-link" href="https://www.google.com/search?q=さっぽろ羊ヶ丘展望台" target="_blank">さっぽろ羊ヶ丘展望台</a></div>
-        <div class="tl-desc">クラーク博士の像と広大な牧草地が広がる札幌を代表する絶景スポット。北海道らしい雄大な風景を最初に満喫。</div>
-        <div class="tl-meta"><span class="tl-tag tag-time">滞在 1h</span></div>
-      </div></div>
-    </div>
-    <div class="tl-row"><div class="tl-time-col">15:00</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-car"></i><span class="t-label">羊ヶ丘 → 白い恋人パーク</span><span class="t-dur">約30min</span></div></div></div></div>
-    <div class="tl-row">
-      <div class="tl-time-col">15:30〜<br>17:00</div>
-      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
-      <div class="tl-content-col"><div class="tl-card">
-        <div class="tl-name"><i class="ti ti-building-castle"></i><a class="spot-link" href="https://www.google.com/search?q=白い恋人パーク" target="_blank">白い恋人パーク</a></div>
-        <div class="tl-desc">北海道銘菓「白い恋人」の製造工程を見学できるテーマパーク。英国風の建物が映えスポットとしても人気。お土産購入も忘れずに。</div>
-        <div class="tl-meta"><span class="tl-tag tag-time">滞在 1.5h</span><span class="tl-tag tag-alert">最終入場 17:30</span></div>
-      </div></div>
-    </div>
-    <div class="tl-row"><div class="tl-time-col">17:00</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-car"></i><span class="t-label">白い恋人パーク → トリトン手稲店</span><span class="t-dur">約15min</span></div></div></div></div>
-    <div class="tl-row">
-      <div class="tl-time-col">17:15〜<br>19:15</div>
-      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
-      <div class="tl-content-col"><div class="tl-card meal">
-        <div class="tl-name"><i class="ti ti-tools-kitchen-2"></i><a class="spot-link" href="https://www.google.com/search?q=回転寿し+トリトン+手稲店" target="_blank">回転寿し トリトン 手稲店</a></div>
-        <div class="tl-desc">北海道No.1の人気回転寿司チェーン。新鮮な北海道産のネタが揃い、ウニ・イクラ・カニなど道産食材を堪能できる。白い恋人パークから車で15分とアクセス抜群。</div>
-        <div class="tl-meta"><span class="tl-tag tag-time">滞在 2h</span><span class="tl-tag tag-food">回転寿司・北海道産ネタ</span></div>
-      </div></div>
-    </div>
-    <div class="tl-row"><div class="tl-time-col">19:15</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-car"></i><span class="t-label">トリトン手稲店 → リトルバレル（小樽）</span><span class="t-dur">約25min</span></div></div></div></div>
-    <div class="tl-row"><div class="tl-time-col">19:40</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-moon"></i><span class="t-label">ホテルチェックイン　リトルバレル</span></div></div></div></div>
-  </div>
-  <div class="night-badge"><i class="ti ti-moon"></i> 小樽　リトルバレル　泊</div>
+  load() {
+    try { const r = localStorage.getItem(this.KEY); if (r) return JSON.parse(r); } catch (e) {}
+    return this.seed();
+  }
+  persist(d) { try { localStorage.setItem(this.KEY, JSON.stringify(d)); } catch (e) {} }
+  update(mut) {
+    const d = JSON.parse(JSON.stringify(this.state.data));
+    mut(d);
+    this.persist(d);
+    this.setState({ data: d });
+  }
+  uid() { return 'b' + Date.now().toString(36) + Math.floor(Math.random() * 1000); }
 
-</div>
+  toMin(s) { if (!s) return null; const p = s.split(':'); return (+p[0]) * 60 + (+p[1]); }
+  fmt(m) { m = ((m % 1440) + 1440) % 1440; const h = Math.floor(m / 60), mm = m % 60; return String(h).padStart(2, '0') + ':' + String(mm).padStart(2, '0'); }
+  hd(min) { if (min < 60) return min + '分'; const h = Math.floor(min / 60), m = min % 60; return m ? h + '時間' + m + '分' : h + '時間'; }
+  yen(n) { return '¥' + Math.round(n).toLocaleString('ja-JP'); }
 
-<div class="section-divider"></div>
+  tagStyle(k) {
+    const m = {
+      stay: { bg: '#e3efe7', color: '#246b48' },
+      eat: { bg: '#e6f0f6', color: '#2f6f9e' },
+      warn: { bg: '#f7ecd6', color: '#9a6a16' },
+      info: { bg: '#edf0ea', color: '#5e6c61' },
+      time: { bg: '#eae6dc', color: '#73695a' },
+      bed: { bg: '#214f3b', color: '#ffffff' }
+    };
+    return m[k] || m.info;
+  }
 
-<!-- DAY 2 -->
-<div class="day-section day2">
-  <div class="day-header">
-    <div class="day-badge">DAY<br>2</div>
-    <div>
-      <div class="day-title">7月28日（火）　小樽 → 函館</div>
-      <div class="day-subtitle">青の洞窟（天候次第）→ 函館移動 → 元町散策 → 函館山夜景 → 函館泊</div>
-    </div>
-  </div>
-  <div class="timeline">
-    <div class="tl-row"><div class="tl-time-col">8:00</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-building"></i><span class="t-label">チェックアウト</span></div></div></div></div>
-    <div class="tl-row">
-      <div class="tl-time-col">8:30〜<br>10:00</div>
-      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
-      <div class="tl-content-col"><div class="tl-card">
-        <div class="tl-name"><i class="ti ti-wave-sine"></i><a class="spot-link" href="https://www.google.com/search?q=小樽+青の洞窟クルーズ" target="_blank">小樽　青の洞窟クルーズ</a></div>
-        <div class="tl-desc">朝の澄んだ光が海面に反射し、洞窟内が幻想的な青に輝く。午前中が最も光の状態が良く透明度も高い。</div>
-        <div class="tl-meta"><span class="tl-tag tag-time">滞在 1.5h</span><span class="tl-tag tag-alert">天候欠航あり・要予約</span></div>
-      </div></div>
-    </div>
-    <div class="tl-row"><div class="tl-time-col">10:00</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-car"></i><span class="t-label">小樽 → 函館（高速道路）</span><span class="t-dur">約4.5h</span></div></div></div></div>
-    <div class="tl-row">
-      <div class="tl-time-col">12:15〜<br>13:00</div>
-      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
-      <div class="tl-content-col"><div class="tl-card meal">
-        <div class="tl-name"><i class="ti ti-tools-kitchen-2"></i>昼食（途中SA）</div>
-        <div class="tl-desc">北海道のSAは道の駅並みのクオリティ。ソフトクリームや地元グルメも充実。</div>
-        <div class="tl-meta"><span class="tl-tag tag-time">食事 45min</span></div>
-      </div></div>
-    </div>
-    <div class="tl-row">
-      <div class="tl-time-col">14:30〜<br>17:00</div>
-      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
-      <div class="tl-content-col"><div class="tl-card">
-        <div class="tl-name"><i class="ti ti-building-arch"></i><a class="spot-link" href="https://www.google.com/search?q=函館+元町+ベイエリア" target="_blank">函館　元町・ベイエリア散策</a></div>
-        <div class="tl-desc">明治・大正時代の洋館が立ち並ぶ異国情緒あふれるエリア。坂道から函館湾を一望できる絶景ポイントも多数。旧函館区公会堂や元町教会群は必見。</div>
-        <div class="tl-meta"><span class="tl-tag tag-time">滞在 2.5h</span></div>
-      </div></div>
-    </div>
-    <div class="tl-row">
-      <div class="tl-time-col">17:00〜<br>18:30</div>
-      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
-      <div class="tl-content-col"><div class="tl-card meal">
-        <div class="tl-name"><i class="ti ti-tools-kitchen-2"></i>函館　夕食</div>
-        <div class="tl-desc">函館といえば塩ラーメン・イカ刺し・海鮮丼。函館朝市周辺の食堂が充実。</div>
-        <div class="tl-meta"><span class="tl-tag tag-time">食事 1.5h</span><span class="tl-tag tag-food">塩ラーメン・イカ</span></div>
-      </div></div>
-    </div>
-    <div class="tl-row"><div class="tl-time-col">18:30</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-car"></i><span class="t-label">函館市内 → 函館山ロープウェイ乗り場</span><span class="t-dur">約15min</span></div></div></div></div>
-    <div class="tl-row">
-      <div class="tl-time-col">19:00〜<br>20:30</div>
-      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
-      <div class="tl-content-col"><div class="tl-card">
-        <div class="tl-name"><i class="ti ti-star"></i><a class="spot-link" href="https://www.google.com/search?q=函館山+夜景" target="_blank">函館山　夜景</a></div>
-        <div class="tl-desc">世界三大夜景のひとつ。標高334mの山頂から函館の夜景を一望。くびれた半島の両側に広がる光の海は息をのむ美しさ。日没直後の19〜20時台がベスト。</div>
-        <div class="tl-meta"><span class="tl-tag tag-time">滞在 1.5h</span><span class="tl-tag tag-alert">ロープウェイ推奨・混雑注意</span></div>
-      </div></div>
-    </div>
-    <div class="tl-row"><div class="tl-time-col">21:00</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-moon"></i><span class="t-label">ホテルチェックイン　fav函館</span></div></div></div></div>
-  </div>
-  <div class="night-badge"><i class="ti ti-moon"></i> 函館　fav函館　泊</div>
+  seed() {
+    const D = (start, durationMin, title, desc, tags, link, extra) =>
+      Object.assign({ id: this.uid(), type: 'spot', start, durationMin, title, desc: desc || '', tags: tags || [], link: link || '' }, extra || {});
+    const M = (mode, label, min) => ({ id: this.uid(), type: 'move', mode, label, min });
+    return {
+      budget: {
+        target: 100000, people: 4,
+        cats: [
+          { id: 'air', icon: '✈️', label: '航空券（往復）', amount: 40000 },
+          { id: 'car', icon: '🚗', label: 'レンタカー・高速・ガソリン', amount: 12000 },
+          { id: 'hotel', icon: '🛏️', label: '宿泊（2泊）', amount: 16000 },
+          { id: 'food', icon: '🍽️', label: '食事', amount: 16000 },
+          { id: 'sight', icon: '🎟️', label: '観光・入場・体験', amount: 6000 },
+          { id: 'gift', icon: '🎁', label: 'お土産', amount: 8000 }
+        ]
+      },
+      todos: [
+        { t: 'レンタカー予約（新千歳）受取13:30 / 返却18:00', done: false },
+        { t: '航空券予約（羽田⇄新千歳）', done: false },
+        { t: '1日目ホテル予約（小樽 リトルバレル）', done: false },
+        { t: '2日目ホテル確認（函館 fav函館）', done: false },
+        { t: '青の洞窟クルーズ予約（欠航時のキャンセルポリシー確認）', done: false },
+        { t: '函館山ロープウェイの運行時間を確認', done: false }
+      ],
+      packing: [
+        { t: '上着・羽織もの（朝晩・函館山は冷える）', done: false },
+        { t: '歩きやすい靴', done: false },
+        { t: '日焼け止め・帽子', done: false },
+        { t: 'モバイルバッテリー', done: false },
+        { t: '充電器・ケーブル', done: false },
+        { t: '常備薬', done: false },
+        { t: '健康保険証', done: false },
+        { t: '現金・クレジットカード', done: false },
+        { t: 'エコバッグ（お土産用）', done: false },
+        { t: '折りたたみ傘（青の洞窟・天候用）', done: false }
+      ],
+      days: [
+        {
+          tag: 'DAY 1', date: '7/27', dateLong: '7月27日(月)', area: '札幌・小樽エリア',
+          summary: '新千歳着 → 羊ヶ丘 → 白い恋人パーク → トリトン → 小樽泊',
+          blocks: [
+            M('plane', '羽田 11:15 → 新千歳 13:00', 105),
+            D('13:00', 30, '新千歳着・レンタカー手続き', '荷物受取後にレンタカー手続き。出発準備を整える。', [{ t: '到着', k: 'info' }, { t: '30min', k: 'time' }]),
+            M('car', '約30min', 30),
+            D('14:00', 60, 'さっぽろ羊ヶ丘展望台', 'クラーク博士像と広大な牧草地。北海道らしい雄大な風景を最初に満喫。', [{ t: '滞在 1h', k: 'stay' }], 'https://www.google.com/search?q=さっぽろ羊ヶ丘展望台'),
+            M('car', '約30min', 30),
+            D('15:30', 90, '白い恋人パーク', '銘菓「白い恋人」の製造見学とフォトスポット。お土産購入も忘れずに。', [{ t: '滞在 1.5h', k: 'stay' }, { t: '最終入場 17:30', k: 'warn' }], 'https://www.google.com/search?q=白い恋人パーク'),
+            M('car', '約15min', 15),
+            D('17:15', 120, '回転寿し トリトン 手稲店', '北海道No.1人気の回転寿司。ウニ・イクラ・カニなど道産ネタを堪能。', [{ t: '滞在 2h', k: 'stay' }, { t: '夕食', k: 'eat' }], 'https://www.google.com/search?q=回転寿し+トリトン+手稲店'),
+            M('car', '約25min', 25),
+            D('19:40', 0, 'リトルバレル（小樽）', 'チェックイン。小樽泊。', [{ t: '宿泊', k: 'bed' }], '', { stayover: true })
+          ]
+        },
+        {
+          tag: 'DAY 2', date: '7/28', dateLong: '7月28日(火)', area: '小樽 → 函館',
+          summary: '青の洞窟 → 函館移動 → 元町散策 → 函館山夜景 → 函館泊',
+          blocks: [
+            D('08:00', 30, 'チェックアウト', '出発準備。', [{ t: '出発', k: 'info' }]),
+            D('08:30', 90, '小樽 青の洞窟クルーズ', '朝の澄んだ光で洞窟内が幻想的な青に輝く。午前が最も透明度が高い。', [{ t: '滞在 1.5h', k: 'stay' }, { t: '天候欠航あり・要予約', k: 'warn' }], 'https://www.google.com/search?q=小樽+青の洞窟クルーズ'),
+            M('car', '高速 約2h', 135),
+            D('12:15', 45, '昼食（途中SA）', '北海道のSAは道の駅並みのクオリティ。ソフトクリームや地元グルメも充実。', [{ t: '食事 45min', k: 'eat' }]),
+            M('car', '高速 約1.5h', 90),
+            D('14:30', 150, '函館 元町・ベイエリア散策', '明治・大正の洋館が並ぶ異国情緒エリア。坂道から函館湾を一望できる絶景も。', [{ t: '滞在 2.5h', k: 'stay' }], 'https://www.google.com/search?q=函館+元町+ベイエリア'),
+            D('17:00', 90, '函館 夕食', '塩ラーメン・イカ刺し・海鮮丼。函館朝市周辺の食堂が充実。', [{ t: '食事 1.5h', k: 'eat' }, { t: '塩ラーメン', k: 'eat' }]),
+            M('car', '約15min', 15),
+            D('19:00', 90, '函館山 夜景', '世界三大夜景のひとつ。標高334mから光の海を一望。日没直後がベスト。', [{ t: '滞在 1.5h', k: 'stay' }, { t: 'ロープウェイ推奨・混雑注意', k: 'warn' }], 'https://www.google.com/search?q=函館山+夜景'),
+            M('car', '約15min', 15),
+            D('21:00', 0, 'fav函館', 'チェックイン。函館泊。', [{ t: '宿泊', k: 'bed' }], '', { stayover: true })
+          ]
+        },
+        {
+          tag: 'DAY 3', date: '7/29', dateLong: '7月29日(水)', area: '函館 → 札幌 → 帰京',
+          summary: '朝市 → 札幌（ビール工場）→ ロイズ → 新千歳 → 羽田',
+          blocks: [
+            D('07:00', 60, '函館朝市', 'うに・いくら・カニ・イカなど新鮮な海の幸。どんぶり横丁で海鮮丼を朝食に。', [{ t: '滞在 1h', k: 'stay' }, { t: '朝食', k: 'eat' }], 'https://www.google.com/search?q=函館朝市'),
+            D('08:00', 60, 'ホテルに戻る・チェックアウト', '荷造りと出発準備。', [{ t: '出発', k: 'info' }]),
+            M('car', '高速 約3.5h', 210),
+            D('12:30', 60, '札幌 昼食', '締めは札幌グルメ。味噌ラーメンやスープカレーを。', [{ t: '食事 1h', k: 'eat' }, { t: '味噌ラーメン', k: 'eat' }]),
+            M('car', '約15min', 15),
+            D('13:45', 90, '札幌ビール工場', '1876年創業。製造見学後に新鮮なサッポロビールを試飲。ジンギスカンも格別。', [{ t: '滞在 1.5h', k: 'stay' }], 'https://www.google.com/search?q=サッポロビール園+札幌ビール工場'),
+            M('car', '約25min', 25),
+            D('15:40', 125, 'ロイズ カカオ＆チョコレートタウン', '体験型テーマパーク。限定商品のお土産購入も。新千歳直前でアクセス抜群。', [{ t: '滞在 2h', k: 'stay' }, { t: 'お土産 ◎', k: 'info' }], 'https://www.google.com/search?q=ロイズカカオ&チョコレートタウン'),
+            M('car', '約20min・返却', 20),
+            D('18:00', 155, '新千歳空港 お土産・夕食', '国内最高峰の空港グルメ。ラーメン道場・スイーツ・海産物など買い物も充実。', [{ t: '約2h', k: 'time' }, { t: 'レンタカー返却済', k: 'info' }]),
+            M('plane', '新千歳 20:35 → 羽田 22:15', 100)
+          ]
+        }
+      ]
+    };
+  }
 
-</div>
+  computeFeed(day) {
+    let cursor = null, pend = 0;
+    const out = [];
+    day.blocks.forEach((b, bidx) => {
+      if (b.type === 'move') {
+        pend += (b.min || 0);
+        out.push({ id: b.id, bidx, isMove: true, isSpot: false, icon: b.mode === 'plane' ? '✈' : '🚗', label: b.label || this.hd(b.min || 0) });
+        return;
+      }
+      const s = this.toMin(b.start);
+      let gap = null;
+      if (cursor != null && s != null) {
+        const earliest = cursor + pend;
+        const diff = s - earliest;
+        if (diff >= 30) gap = { type: 'free', min: diff, start: this.fmt(earliest) };
+        else if (diff <= -10) gap = { type: 'over', min: -diff };
+      }
+      const dur = b.durationMin || 0;
+      const range = (dur > 0 && s != null) ? b.start + '–' + this.fmt(s + dur) : b.start;
+      if (s != null) { cursor = s + dur; }
+      pend = 0;
+      const so = b.stayover;
+      out.push({
+        id: b.id, bidx, isMove: false, isSpot: true,
+        title: b.title, desc: b.desc, hasDesc: !!b.desc,
+        hasLink: !!b.link, link: b.link,
+        timeRange: range,
+        tags: (b.tags || []).map(t => Object.assign({ t: t.t }, this.tagStyle(t.k))),
+        hasTags: (b.tags || []).length > 0,
+        dot: so ? '#214f3b' : '#3a8c5f',
+        cardBg: so ? '#e6efe8' : '#ffffff',
+        cardBd: so ? '#bcd4c4' : '#e4e9e2',
+        titleColor: so ? '#1d4a37' : '#1c2a24',
+        timeColor: so ? '#1d4a37' : '#246b48',
+        timeBg: so ? '#d3e6d9' : '#eaf2ec',
+        hasGap: !!gap,
+        gapAdd: !!gap && gap.type === 'free',
+        gapStart: gap ? gap.start : '',
+        gapText: gap ? (gap.type === 'free' ? '空き時間 ' + this.hd(gap.min) + ' ・ 何か入れる？' : '⚠ ' + gap.min + '分オーバー ・ 時間を見直し') : '',
+        gapBg: gap && gap.type === 'over' ? '#fbeeeb' : '#eef6f0',
+        gapBd: gap && gap.type === 'over' ? '#e6c4bc' : '#bcdcc6',
+        gapColor: gap && gap.type === 'over' ? '#bf4f3c' : '#2c7a52'
+      });
+    });
+    return out;
+  }
 
-<div class="section-divider"></div>
+  // ---- handlers ----
+  onTabClick = (e) => this.setState({ view: e.currentTarget.dataset.v, editing: null });
+  onDayClick = (e) => this.setState({ activeDay: +e.currentTarget.dataset.i });
+  stop = (e) => e.stopPropagation();
 
-<!-- DAY 3 -->
-<div class="day-section day3">
-  <div class="day-header">
-    <div class="day-badge">DAY<br>3</div>
-    <div>
-      <div class="day-title">7月29日（水）　函館 → 札幌 → 帰京</div>
-      <div class="day-subtitle">朝市 → 札幌（ビール工場）→ ロイズ → 新千歳 → 羽田</div>
-    </div>
-  </div>
-  <div class="timeline">
-    <div class="tl-row">
-      <div class="tl-time-col">7:00〜<br>8:00</div>
-      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
-      <div class="tl-content-col"><div class="tl-card meal">
-        <div class="tl-name"><i class="ti ti-fish"></i><a class="spot-link" href="https://www.google.com/search?q=函館朝市" target="_blank">函館朝市</a></div>
-        <div class="tl-desc">早朝から賑わう北海道屈指の市場。うに・いくら・カニ・イカなど新鮮な海の幸が並ぶ。「どんぶり横丁」でいくら丼や海鮮丼を朝食に。</div>
-        <div class="tl-meta"><span class="tl-tag tag-time">滞在 1h</span><span class="tl-tag tag-food">朝食も兼ねる</span></div>
-      </div></div>
-    </div>
-    <div class="tl-row"><div class="tl-time-col">8:00</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-building"></i><span class="t-label">ホテルに戻る・チェックアウト準備</span></div></div></div></div>
-    <div class="tl-row"><div class="tl-time-col">9:00</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-car"></i><span class="t-label">函館 → 札幌（高速道路）</span><span class="t-dur">約3.5h</span></div></div></div></div>
-    <div class="tl-row">
-      <div class="tl-time-col">12:30〜<br>13:30</div>
-      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
-      <div class="tl-content-col"><div class="tl-card meal">
-        <div class="tl-name"><i class="ti ti-tools-kitchen-2"></i>札幌　昼食</div>
-        <div class="tl-desc">締めは札幌グルメで。味噌ラーメン発祥の地・札幌のスープカレーやラーメンを。</div>
-        <div class="tl-meta"><span class="tl-tag tag-time">食事 1h</span><span class="tl-tag tag-food">味噌ラーメン・スープカレー</span></div>
-      </div></div>
-    </div>
-    <div class="tl-row"><div class="tl-time-col">13:30</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-car"></i><span class="t-label">札幌市内 → 札幌ビール工場</span><span class="t-dur">約15min</span></div></div></div></div>
-    <div class="tl-row">
-      <div class="tl-time-col">13:45〜<br>15:15</div>
-      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
-      <div class="tl-content-col"><div class="tl-card">
-        <div class="tl-name"><i class="ti ti-beer"></i><a class="spot-link" href="https://www.google.com/search?q=サッポロビール園+札幌ビール工場" target="_blank">札幌ビール工場</a></div>
-        <div class="tl-desc">創業1876年の歴史ある工場。製造工程の見学後に新鮮なサッポロビールを試飲。工場直送のジンギスカンとの組み合わせも格別。</div>
-        <div class="tl-meta"><span class="tl-tag tag-time">滞在 1.5h</span></div>
-      </div></div>
-    </div>
-    <div class="tl-row"><div class="tl-time-col">15:15</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-car"></i><span class="t-label">ビール工場 → ロイズ（北広島）</span><span class="t-dur">約25min</span></div></div></div></div>
-    <div class="tl-row">
-      <div class="tl-time-col">15:40〜<br>17:45</div>
-      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
-      <div class="tl-content-col"><div class="tl-card">
-        <div class="tl-name"><i class="ti ti-candy"></i><a class="spot-link" href="https://www.google.com/search?q=ロイズカカオ&チョコレートタウン" target="_blank">ロイズカカオ＆チョコレートタウン</a></div>
-        <div class="tl-desc">北海道発チョコレートブランド「ロイズ」の体験型テーマパーク。限定商品のお土産購入も。新千歳の直前でアクセス抜群。</div>
-        <div class="tl-meta"><span class="tl-tag tag-time">滞在 2h</span><span class="tl-tag tag-food">お土産購入◎</span></div>
-      </div></div>
-    </div>
-    <div class="tl-row"><div class="tl-time-col">17:45</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-car"></i><span class="t-label">ロイズ → 新千歳空港（レンタカー返却）</span><span class="t-dur">約20min</span></div></div></div></div>
-    <div class="tl-row">
-      <div class="tl-time-col">18:00〜<br>20:35</div>
-      <div class="tl-line-col"><div class="tl-dot spot"></div></div>
-      <div class="tl-content-col"><div class="tl-card">
-        <div class="tl-name"><i class="ti ti-shopping-bag"></i>新千歳空港　お土産・夕食</div>
-        <div class="tl-desc">新千歳空港は国内最高峰の空港グルメが揃う。ラーメン道場・スイーツ・海産物など買い物も充実。時間は約2時間。</div>
-        <div class="tl-meta"><span class="tl-tag tag-time">約2h</span></div>
-      </div></div>
-    </div>
-    <div class="tl-row"><div class="tl-time-col">20:35</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-plane"></i><span class="t-label">新千歳 → 羽田（飛行機）</span><span class="t-dur">22:15着</span></div></div></div></div>
-  </div>
+  onOpenEdit = (e) => {
+    const bidx = +e.currentTarget.dataset.bidx;
+    const blk = this.state.data.days[this.state.activeDay].blocks[bidx];
+    this.setState({ editing: { bidx, kind: blk.type, draft: JSON.parse(JSON.stringify(blk)) } });
+  };
+  closeEdit = () => this.setState({ editing: null });
+  onDraftChange = (e) => {
+    const f = e.target.dataset.field;
+    let v = e.target.value;
+    if (f === 'durationMin' || f === 'min') v = Math.max(0, parseInt(v || '0', 10) || 0);
+    this.setState(s => ({ editing: Object.assign({}, s.editing, { draft: Object.assign({}, s.editing.draft, { [f]: v }) }) }));
+  };
+  setDraftMode = (e) => {
+    const m = e.currentTarget.dataset.mode;
+    this.setState(s => ({ editing: Object.assign({}, s.editing, { draft: Object.assign({}, s.editing.draft, { mode: m }) }) }));
+  };
+  saveEdit = () => {
+    const { bidx, draft } = this.state.editing;
+    const di = this.state.activeDay;
+    this.update(d => { d.days[di].blocks[bidx] = draft; });
+    this.setState({ editing: null });
+  };
+  deleteBlock = () => {
+    const { bidx } = this.state.editing;
+    const di = this.state.activeDay;
+    this.update(d => { d.days[di].blocks.splice(bidx, 1); });
+    this.setState({ editing: null });
+  };
+  onMoveUp = () => {
+    const { bidx } = this.state.editing; if (bidx <= 0) return;
+    const di = this.state.activeDay;
+    this.update(d => { const a = d.days[di].blocks; [a[bidx - 1], a[bidx]] = [a[bidx], a[bidx - 1]]; });
+    this.setState(s => ({ editing: Object.assign({}, s.editing, { bidx: bidx - 1 }) }));
+  };
+  onMoveDown = () => {
+    const { bidx } = this.state.editing;
+    const di = this.state.activeDay;
+    if (bidx >= this.state.data.days[di].blocks.length - 1) return;
+    this.update(d => { const a = d.days[di].blocks; [a[bidx + 1], a[bidx]] = [a[bidx], a[bidx + 1]]; });
+    this.setState(s => ({ editing: Object.assign({}, s.editing, { bidx: bidx + 1 }) }));
+  };
+  onAddSpot = () => {
+    const di = this.state.activeDay;
+    const blk = { id: this.uid(), type: 'spot', start: '12:00', durationMin: 60, title: '新しい予定', desc: '', tags: [], link: '' };
+    let pos;
+    this.update(d => { pos = d.days[di].blocks.length; d.days[di].blocks.push(blk); });
+    this.setState({ editing: { bidx: pos, kind: 'spot', draft: JSON.parse(JSON.stringify(blk)) } });
+  };
+  onAddAtGap = (e) => {
+    e.stopPropagation();
+    const di = this.state.activeDay;
+    const at = +e.currentTarget.dataset.bidx;
+    const start = e.currentTarget.dataset.start || '12:00';
+    const blk = { id: this.uid(), type: 'spot', start, durationMin: 30, title: '空き時間の予定', desc: '', tags: [{ t: '追加', k: 'info' }], link: '' };
+    this.update(d => { d.days[di].blocks.splice(at, 0, blk); });
+    this.setState({ editing: { bidx: at, kind: 'spot', draft: JSON.parse(JSON.stringify(blk)) } });
+  };
 
-</div>
+  onBudgetChange = (e) => {
+    const id = e.target.dataset.id;
+    const v = Math.max(0, parseInt(e.target.value || '0', 10) || 0);
+    this.update(d => { const c = d.budget.cats.find(x => x.id === id); if (c) c.amount = v; });
+  };
 
-<div class="section-divider"></div>
+  onToggle = (e) => {
+    const list = e.currentTarget.dataset.list === 'todo' ? 'todos' : 'packing';
+    const i = +e.currentTarget.dataset.i;
+    this.update(d => { d[list][i].done = !d[list][i].done; });
+  };
+  onDelete = (e) => {
+    const list = e.currentTarget.dataset.list === 'todo' ? 'todos' : 'packing';
+    const i = +e.currentTarget.dataset.i;
+    this.update(d => { d[list].splice(i, 1); });
+  };
+  onDraftTodoChange = (e) => this.setState({ draftTodo: e.target.value });
+  onDraftPackChange = (e) => this.setState({ draftPack: e.target.value });
+  addTodo = () => { const t = this.state.draftTodo.trim(); if (!t) return; this.update(d => d.todos.push({ t, done: false })); this.setState({ draftTodo: '' }); };
+  addPack = () => { const t = this.state.draftPack.trim(); if (!t) return; this.update(d => d.packing.push({ t, done: false })); this.setState({ draftPack: '' }); };
+  onAddTodo = () => this.addTodo();
+  onAddPack = () => this.addPack();
+  onAddKey = (e) => { if (e.key === 'Enter') { e.preventDefault(); if (e.currentTarget.dataset.list === 'todo') this.addTodo(); else this.addPack(); } };
 
-<div class="tips-box">
-  <h3><i class="ti ti-checklist" style="font-size:15px"></i> やることリスト</h3>
-  <ul>
-    <li><i class="ti ti-square-check"></i>レンタカー予約（新千歳）→ 受取 13:30 / 返却 18:00</li>
-    <li><i class="ti ti-square-check" style="color:#1D9E75"></i>1日目ホテル予約（小樽）→ リトルバレル</li>
-    <li><i class="ti ti-square-check" style="color:#1D9E75"></i>2日目ホテル確認（函館）→ fav函館</li>
-    <li><i class="ti ti-square"></i>青の洞窟クルーズ予約（欠航時のキャンセルポリシー確認）</li>
-  </ul>
-</div>
+  renderVals() {
+    const d = this.state.data;
+    const view = this.state.view;
+    const ad = Math.min(this.state.activeDay, d.days.length - 1);
+    const day = d.days[ad];
 
+    const dayTabs = d.days.map((x, i) => ({
+      i, tag: x.tag, date: x.date,
+      bg: i === ad ? '#214f3b' : '#ffffff',
+      fg: i === ad ? '#ffffff' : '#6b7d72',
+      bd: i === ad ? '#214f3b' : '#dde4dd'
+    }));
+
+    const tabsDef = [
+      { v: 'itinerary', icon: '🗺️', label: '行程' },
+      { v: 'budget', icon: '💰', label: '予算' },
+      { v: 'packing', icon: '🎒', label: '準備' }
+    ];
+    const bottomTabs = tabsDef.map(t => ({ v: t.v, icon: t.icon, label: t.label, color: view === t.v ? '#214f3b' : '#9aa79e' }));
+
+    // budget
+    const perPerson = d.budget.cats.reduce((a, c) => a + (c.amount || 0), 0);
+    const remain = d.budget.target - perPerson;
+    const over = remain < 0;
+    const palette = { air: '#e6f0f6', car: '#e3efe7', hotel: '#f0ecf6', food: '#fbeee0', sight: '#e6f0f6', gift: '#fbe9ee' };
+    const b = {
+      cats: d.budget.cats.map(c => ({ id: c.id, icon: c.icon, label: c.label, amount: c.amount, iconBg: palette[c.id] || '#edf0ea' })),
+      perPersonFmt: this.yen(perPerson),
+      groupFmt: this.yen(perPerson * d.budget.people),
+      remainFmt: this.yen(Math.abs(remain)),
+      remainLabel: over ? '予算オーバー' : '残り',
+      pct: Math.min(100, Math.round(perPerson / d.budget.target * 100)),
+      barColor: over ? '#e6a23c' : '#6fd29a'
+    };
+
+    const mkList = (arr) => arr.map((x, i) => ({
+      i, t: x.t,
+      check: x.done ? '✓' : '',
+      box: x.done ? '#3a8c5f' : '#ffffff',
+      bd: x.done ? '#3a8c5f' : '#cdd6cd',
+      textColor: x.done ? '#9aa79e' : '#1c2a24',
+      deco: x.done ? 'line-through' : 'none'
+    }));
+    const todos = mkList(d.todos);
+    const packing = mkList(d.packing);
+    const td = d.todos.filter(x => x.done).length;
+    const pd = d.packing.filter(x => x.done).length;
+
+    const ed = this.state.editing;
+    const mode = ed && ed.draft ? ed.draft.mode : null;
+
+    return {
+      isItinerary: view === 'itinerary',
+      isBudget: view === 'budget',
+      isPacking: view === 'packing',
+      dayTabs,
+      day: { area: day.area, summary: day.summary },
+      feed: this.computeFeed(day),
+      bottomTabs,
+      b,
+      todos, packing,
+      todoDoneLabel: td + ' / ' + d.todos.length,
+      packDoneLabel: pd + ' / ' + d.packing.length,
+      draftTodo: this.state.draftTodo,
+      draftPack: this.state.draftPack,
+      editing: ed,
+      editIsSpot: !!ed && ed.kind === 'spot',
+      editIsMove: !!ed && ed.kind === 'move',
+      editTitle: ed ? (ed.kind === 'spot' ? '予定を編集' : '移動を編集') : '',
+      modeCarBg: mode === 'car' ? '#214f3b' : '#ffffff',
+      modeCarFg: mode === 'car' ? '#ffffff' : '#5b6b61',
+      modeCarBd: mode === 'car' ? '#214f3b' : '#dde4dd',
+      modePlaneBg: mode === 'plane' ? '#214f3b' : '#ffffff',
+      modePlaneFg: mode === 'plane' ? '#ffffff' : '#5b6b61',
+      modePlaneBd: mode === 'plane' ? '#214f3b' : '#dde4dd',
+      onTabClick: this.onTabClick,
+      onDayClick: this.onDayClick,
+      onOpenEdit: this.onOpenEdit,
+      closeEdit: this.closeEdit,
+      onDraftChange: this.onDraftChange,
+      setDraftMode: this.setDraftMode,
+      saveEdit: this.saveEdit,
+      deleteBlock: this.deleteBlock,
+      onMoveUp: this.onMoveUp,
+      onMoveDown: this.onMoveDown,
+      onAddSpot: this.onAddSpot,
+      onAddAtGap: this.onAddAtGap,
+      onBudgetChange: this.onBudgetChange,
+      onToggle: this.onToggle,
+      onDelete: this.onDelete,
+      onDraftTodoChange: this.onDraftTodoChange,
+      onDraftPackChange: this.onDraftPackChange,
+      onAddTodo: this.onAddTodo,
+      onAddPack: this.onAddPack,
+      onAddKey: this.onAddKey,
+      stop: this.stop
+    };
+  }
+}
+</script>
 </body>
 </html>
