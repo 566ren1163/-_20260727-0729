@@ -57,6 +57,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .tips-box ul{list-style:none;display:flex;flex-direction:column;gap:6px}
 .tips-box li{font-size:12px;color:#666;display:flex;align-items:flex-start;gap:6px}
 .tips-box li i{font-size:14px;flex-shrink:0;margin-top:1px}
+a.spot-link{color:inherit;text-decoration:none;border-bottom:1.5px dashed #aaa;padding-bottom:1px;transition:color .15s,border-color .15s}
+a.spot-link:hover{color:#185FA5;border-color:#185FA5}
+a.spot-link::after{content:' ↗';font-size:10px;color:#aaa;vertical-align:1px}
 @media(max-width:480px){.tl-row{grid-template-columns:60px 18px 1fr}.night-badge{margin-left:86px}}
 </style>
 </head>
@@ -102,7 +105,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div class="tl-time-col">14:00〜<br>15:00</div>
       <div class="tl-line-col"><div class="tl-dot spot"></div></div>
       <div class="tl-content-col"><div class="tl-card">
-        <div class="tl-name"><i class="ti ti-mountains"></i>さっぽろ羊ヶ丘展望台</div>
+        <div class="tl-name"><i class="ti ti-mountains"></i><a class="spot-link" href="https://www.google.com/search?q=さっぽろ羊ヶ丘展望台" target="_blank">さっぽろ羊ヶ丘展望台</a></div>
         <div class="tl-desc">クラーク博士の像と広大な牧草地が広がる札幌を代表する絶景スポット。北海道らしい雄大な風景を最初に満喫。</div>
         <div class="tl-meta"><span class="tl-tag tag-time">滞在 1h</span></div>
       </div></div>
@@ -112,7 +115,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div class="tl-time-col">15:30〜<br>17:00</div>
       <div class="tl-line-col"><div class="tl-dot spot"></div></div>
       <div class="tl-content-col"><div class="tl-card">
-        <div class="tl-name"><i class="ti ti-building-castle"></i>白い恋人パーク</div>
+        <div class="tl-name"><i class="ti ti-building-castle"></i><a class="spot-link" href="https://www.google.com/search?q=白い恋人パーク" target="_blank">白い恋人パーク</a></div>
         <div class="tl-desc">北海道銘菓「白い恋人」の製造工程を見学できるテーマパーク。英国風の建物が映えスポットとしても人気。お土産購入も忘れずに。</div>
         <div class="tl-meta"><span class="tl-tag tag-time">滞在 1.5h</span><span class="tl-tag tag-alert">最終入場 17:30</span></div>
       </div></div>
@@ -129,7 +132,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     </div>
     <div class="tl-row"><div class="tl-time-col">19:00</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-moon"></i><span class="t-label">ホテルチェックイン（小樽市内）</span></div></div></div></div>
   </div>
-  <div class="night-badge"><i class="ti ti-moon"></i> 小樽市内　泊</div>
+  <div class="night-badge"><i class="ti ti-moon"></i> 小樽　リトルバレル　泊</div>
 
 </div>
 
@@ -150,7 +153,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div class="tl-time-col">8:30〜<br>10:00</div>
       <div class="tl-line-col"><div class="tl-dot spot"></div></div>
       <div class="tl-content-col"><div class="tl-card">
-        <div class="tl-name"><i class="ti ti-wave-sine"></i>小樽　青の洞窟クルーズ</div>
+        <div class="tl-name"><i class="ti ti-wave-sine"></i><a class="spot-link" href="https://www.google.com/search?q=小樽+青の洞窟クルーズ" target="_blank">小樽　青の洞窟クルーズ</a></div>
         <div class="tl-desc">朝の澄んだ光が海面に反射し、洞窟内が幻想的な青に輝く。午前中が最も光の状態が良く透明度も高い。</div>
         <div class="tl-meta"><span class="tl-tag tag-time">滞在 1.5h</span><span class="tl-tag tag-alert">天候欠航あり・要予約</span></div>
       </div></div>
@@ -169,7 +172,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div class="tl-time-col">14:30〜<br>17:00</div>
       <div class="tl-line-col"><div class="tl-dot spot"></div></div>
       <div class="tl-content-col"><div class="tl-card">
-        <div class="tl-name"><i class="ti ti-building-arch"></i>函館　元町・ベイエリア散策</div>
+        <div class="tl-name"><i class="ti ti-building-arch"></i><a class="spot-link" href="https://www.google.com/search?q=函館+元町+ベイエリア" target="_blank">函館　元町・ベイエリア散策</a></div>
         <div class="tl-desc">明治・大正時代の洋館が立ち並ぶ異国情緒あふれるエリア。坂道から函館湾を一望できる絶景ポイントも多数。旧函館区公会堂や元町教会群は必見。</div>
         <div class="tl-meta"><span class="tl-tag tag-time">滞在 2.5h</span></div>
       </div></div>
@@ -188,14 +191,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div class="tl-time-col">19:00〜<br>20:30</div>
       <div class="tl-line-col"><div class="tl-dot spot"></div></div>
       <div class="tl-content-col"><div class="tl-card">
-        <div class="tl-name"><i class="ti ti-star"></i>函館山　夜景</div>
+        <div class="tl-name"><i class="ti ti-star"></i><a class="spot-link" href="https://www.google.com/search?q=函館山+夜景" target="_blank">函館山　夜景</a></div>
         <div class="tl-desc">世界三大夜景のひとつ。標高334mの山頂から函館の夜景を一望。くびれた半島の両側に広がる光の海は息をのむ美しさ。日没直後の19〜20時台がベスト。</div>
         <div class="tl-meta"><span class="tl-tag tag-time">滞在 1.5h</span><span class="tl-tag tag-alert">ロープウェイ推奨・混雑注意</span></div>
       </div></div>
     </div>
-    <div class="tl-row"><div class="tl-time-col">21:00</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-moon"></i><span class="t-label">ホテルチェックイン（函館市内）</span></div></div></div></div>
+    <div class="tl-row"><div class="tl-time-col">21:00</div><div class="tl-line-col"><div class="tl-dot"></div></div><div class="tl-content-col"><div class="tl-card transport"><div class="transport-inner"><i class="ti ti-moon"></i><span class="t-label">ホテルチェックイン　fav函館</span></div></div></div></div>
   </div>
-  <div class="night-badge"><i class="ti ti-moon"></i> 函館市内　泊（予約済）</div>
+  <div class="night-badge"><i class="ti ti-moon"></i> 函館　fav函館　泊</div>
 
 </div>
 
@@ -215,7 +218,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div class="tl-time-col">5:30〜<br>6:30</div>
       <div class="tl-line-col"><div class="tl-dot spot"></div></div>
       <div class="tl-content-col"><div class="tl-card meal">
-        <div class="tl-name"><i class="ti ti-fish"></i>函館朝市</div>
+        <div class="tl-name"><i class="ti ti-fish"></i><a class="spot-link" href="https://www.google.com/search?q=函館朝市" target="_blank">函館朝市</a></div>
         <div class="tl-desc">早朝5時から賑わう北海道屈指の市場。うに・いくら・カニ・イカなど新鮮な海の幸が並ぶ。「どんぶり横丁」でいくら丼や海鮮丼を朝食に。</div>
         <div class="tl-meta"><span class="tl-tag tag-time">滞在 1h</span><span class="tl-tag tag-food">朝食も兼ねる</span></div>
       </div></div>
@@ -236,7 +239,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div class="tl-time-col">12:15〜<br>13:45</div>
       <div class="tl-line-col"><div class="tl-dot spot"></div></div>
       <div class="tl-content-col"><div class="tl-card">
-        <div class="tl-name"><i class="ti ti-beer"></i>札幌ビール工場</div>
+        <div class="tl-name"><i class="ti ti-beer"></i><a class="spot-link" href="https://www.google.com/search?q=サッポロビール園+札幌ビール工場" target="_blank">札幌ビール工場</a></div>
         <div class="tl-desc">創業1876年の歴史ある工場。製造工程の見学後に新鮮なサッポロビールを試飲。工場直送のジンギスカンとの組み合わせも格別。</div>
         <div class="tl-meta"><span class="tl-tag tag-time">滞在 1.5h</span></div>
       </div></div>
@@ -246,7 +249,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div class="tl-time-col">14:15〜<br>15:15</div>
       <div class="tl-line-col"><div class="tl-dot spot"></div></div>
       <div class="tl-content-col"><div class="tl-card">
-        <div class="tl-name"><i class="ti ti-candy"></i>ロイズカカオ＆チョコレートタウン</div>
+        <div class="tl-name"><i class="ti ti-candy"></i><a class="spot-link" href="https://www.google.com/search?q=ロイズカカオ&チョコレートタウン" target="_blank">ロイズカカオ＆チョコレートタウン</a></div>
         <div class="tl-desc">北海道発チョコレートブランド「ロイズ」の体験型テーマパーク。限定商品のお土産購入も。新千歳の直前でアクセス抜群。</div>
         <div class="tl-meta"><span class="tl-tag tag-time">滞在 1h</span><span class="tl-tag tag-food">お土産購入◎</span></div>
       </div></div>
@@ -272,8 +275,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <h3><i class="ti ti-checklist" style="font-size:15px"></i> やることリスト</h3>
   <ul>
     <li><i class="ti ti-square"></i>レンタカー予約（新千歳・7月末は早めに）</li>
-    <li><i class="ti ti-square"></i>1日目ホテル予約（小樽市内）</li>
-    <li><i class="ti ti-square"></i>2日目ホテルの場所確認（友達に確認）</li>
+    <li><i class="ti ti-square-check" style="color:#1D9E75"></i>1日目ホテル予約（小樽）→ リトルバレル</li>
+    <li><i class="ti ti-square-check" style="color:#1D9E75"></i>2日目ホテル確認（函館）→ fav函館</li>
     <li><i class="ti ti-square"></i>青の洞窟クルーズ予約（欠航時のキャンセルポリシー確認）</li>
   </ul>
 </div>
